@@ -3,7 +3,7 @@
 Tower::Tower()
 {
 	isActive = true;
-	radius = 15;
+	radius = 13;
 }
 
 Tower::~Tower()

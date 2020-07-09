@@ -8,6 +8,7 @@ using namespace std;
 //User define
 #include "BaseTower.h"
 #include "Tower.h"
+#include <list>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -15,19 +16,26 @@ using namespace std;
 #define GAMESTORE_HEIGTH 3
 #define GAMEBOARD_WIDTH 19
 #define GAMEBOARD_HEIGTH 6
+#define MAX_TOWER_NUM 100
 
 //User public
+list<int> towerList;
+int towernum;
+
 int mouse_x;
 int mouse_y;
 int CurTower;
 bool isGameOver;
 int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 
-Tower t;
+Tower t[MAX_TOWER_NUM];
 
 void GameInit() {
 	isGameOver = false;
-	t.isActive = false;
+	for (int i = 0; i < MAX_TOWER_NUM; i++) {
+		t[i].isActive = false;
+	}
+
 
 	for (int i = 0; i < GAMEBOARD_WIDTH; i++) {
 		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
@@ -62,6 +70,14 @@ void DrawGameBoard() {
 		glVertex2f(GRID_SIZE * i, GRID_SIZE * GAMEBOARD_HEIGTH);
 		glEnd();
 	}
+
+	glColor3f(0.57, 0.89, 0.25);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, 0);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, 0);
+	glEnd();
 }
 
 void DrawBaseTower(int x, int y) {
@@ -74,6 +90,7 @@ void DrawBaseTower(int x, int y) {
 }
 
 void mouseClick(int button, int state, int x, int y) {
+
 	if (isGameOver) {
 		return;
 	}
@@ -94,13 +111,9 @@ void mouseClick(int button, int state, int x, int y) {
 			}
 			
 			if (CurTower = 1) {
-				t.isActive = true;
-				t.DrawBaseTower(mouse_x, mouse_y);
+				t[0].isActive = true;
 				GameBoard[mouse_x][mouse_y] = 1;
-
-				cout << GameBoard[mouse_x][mouse_y] << endl;
-				cout << "Clicked on play area & Build BaseTower" << endl;
-				//Draw Tower;
+				
 			}
 		}
 		else {
@@ -132,7 +145,12 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	GameInit();
+
+	for (int i = 0; i < MAX_TOWER_NUM; i++) {
+		if (t[i].isActive) {
+			t[i].DrawBaseTower(mouse_x, mouse_y);
+		}
+	}
 	DrawGameBoard();
 
 	glutSwapBuffers();
@@ -162,6 +180,8 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(display);                   // Display function
 	glutTimerFunc(30, update, 0);
 	glutMouseFunc(mouseClick);
+
+	GameInit();
 
 	glutMainLoop();                             // run GLUT mainloop
 	return(0);                                  // this line is never reached
