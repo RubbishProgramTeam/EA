@@ -13,8 +13,8 @@ using namespace std;
 #define _USE_MATH_DEFINES
 #include <math.h>
 #define GRID_SIZE 30
-#define GAMESTORE_HEIGTH 3
-#define GAMEBOARD_WIDTH 19
+#define GAMESTORE_HEIGTH 4
+#define GAMEBOARD_WIDTH 22
 #define GAMEBOARD_HEIGTH 6
 #define MAX_TOWER_NUM 100
 
@@ -60,11 +60,11 @@ void DrawGameBoard() {
 	for (int i = 0; i < GAMEBOARD_HEIGTH; i++) {
 		glBegin(GL_LINES);
 		glVertex2f(0, GRID_SIZE * i);
-		glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * i);
+		glVertex2f(GRID_SIZE * (GAMEBOARD_WIDTH - 3), GRID_SIZE * i);
 		glEnd();
 	}
 
-	for (int i = 0; i < GAMEBOARD_WIDTH; i++) {
+	for (int i = 0; i < GAMEBOARD_WIDTH - 2; i++) {
 		glBegin(GL_LINES);
 		glVertex2f(GRID_SIZE * i, 0);
 		glVertex2f(GRID_SIZE * i, GRID_SIZE * GAMEBOARD_HEIGTH);
@@ -77,15 +77,6 @@ void DrawGameBoard() {
 	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
 	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
 	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, 0);
-	glEnd();
-}
-
-void DrawBaseTower(int x, int y) {
-	glBegin(GL_POLYGON);
-	glColor3f(0, 1, 0);
-	for (int i = 0; i < 360; i++) {
-		glVertex2f((15 * cos(i * M_PI / 180.0f)) + (((x * GRID_SIZE) + ((x + 1) * GRID_SIZE)) / 2), (15 * sin(i * M_PI / 180.0f)) + (((y * GRID_SIZE) + ((y + 1) * GRID_SIZE + 1)) / 2));
-	}
 	glEnd();
 }
 
@@ -102,9 +93,9 @@ void mouseClick(int button, int state, int x, int y) {
 		mouse_x = mouse_x / GRID_SIZE;
 		mouse_y = mouse_y / GRID_SIZE;
 
-		//cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;
+		cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
 
-		if (mouse_x < GAMEBOARD_WIDTH && mouse_y < GAMEBOARD_HEIGTH) {
+		if (mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
 			if (GameBoard[mouse_x][mouse_y] != 0) {
 				MessageBox(NULL, "Please choose other grid!", "ERROR", MB_OK | MB_ICONERROR);
 				return;
@@ -117,7 +108,8 @@ void mouseClick(int button, int state, int x, int y) {
 			}
 		}
 		else {
-			cout << "Clicked on store" << endl;
+			//store area
+			cout << "Clicked on store" << endl;   //debug
 		}
 	}
 
@@ -136,7 +128,7 @@ void cameraSetup(int w, int h) {
 	glMatrixMode(GL_PROJECTION);                // select projection matrix
 	glLoadIdentity();                           // reset projection matrix
 	//gluPerspective(45.0, 1, 1.0, 100.0);        // set up a perspective projection matrix
-	gluOrtho2D(0, w, 0, h);
+	gluOrtho2D(0, GRID_SIZE * GAMEBOARD_WIDTH, 0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
 }
 
 void display() {
@@ -147,10 +139,13 @@ void display() {
 
 
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
-		if (t[i].isActive) {
-			t[i].DrawBaseTower(mouse_x, mouse_y);
+		if (t[i].isActive && mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
+			t[i].hp = 5;
+			t[i].atk = 1;
+			t[i].DrawBaseTower(mouse_x, mouse_y, t[i].hp,t[i].atk);
 		}
 	}
+
 	DrawGameBoard();
 
 	glutSwapBuffers();
@@ -163,8 +158,8 @@ void update(int value) {
 }
 
 int main(int argc, char **argv) {
-	std::cout << "Programmer: <Lau Chin Ho 190034501>\n";
-	std::cout << "Compiled on " << __DATE__ << ", " << __TIME__ << std::endl << std::endl;
+	cout << "Programmer: <Lau Chin Ho 190034501>\n";
+	cout << "Compiled on " << __DATE__ << ", " << __TIME__ << std::endl << std::endl;
 
 	// init GLUT and create Window
 	glutInit(&argc, argv);                      // GLUT initialization
