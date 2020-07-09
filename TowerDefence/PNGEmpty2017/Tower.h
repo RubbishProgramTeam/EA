@@ -19,6 +19,8 @@ public:
 public:
 	bool isActive;
 	int radius;
+
 	float hp;
 	int atk;
+	int towerNum;
 };

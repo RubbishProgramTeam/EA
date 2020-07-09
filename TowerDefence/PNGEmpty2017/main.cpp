@@ -16,11 +16,10 @@ using namespace std;
 #define GAMESTORE_HEIGTH 4
 #define GAMEBOARD_WIDTH 22
 #define GAMEBOARD_HEIGTH 6
-#define MAX_TOWER_NUM 100
+#define MAX_TOWER_NUM 114
 
 //User public
 list<int> towerList;
-int towernum;
 
 int mouse_x;
 int mouse_y;
@@ -34,10 +33,6 @@ void GameInit() {
 	isGameOver = false;
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
 		t[i].isActive = false;
-	}
-
-
-	for (int i = 0; i < GAMEBOARD_WIDTH; i++) {
 		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
 			GameBoard[i][j] = 0;
 			//GameBoard[i][j] = 0; emtry
@@ -93,7 +88,7 @@ void mouseClick(int button, int state, int x, int y) {
 		mouse_x = mouse_x / GRID_SIZE;
 		mouse_y = mouse_y / GRID_SIZE;
 
-		cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
+		//cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
 
 		if (mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
 			if (GameBoard[mouse_x][mouse_y] != 0) {
@@ -102,9 +97,15 @@ void mouseClick(int button, int state, int x, int y) {
 			}
 			
 			if (CurTower = 1) {
-				t[0].isActive = true;
-				GameBoard[mouse_x][mouse_y] = 1;
-				
+				for (int i = 0; i < MAX_TOWER_NUM; i++) {
+					if (towerList.size() < MAX_TOWER_NUM) {
+						t[i].isActive = true;
+						GameBoard[mouse_x][mouse_y] = 1;
+						towerList.push_back(i);
+
+						return;
+					}
+				}	
 			}
 		}
 		else {
