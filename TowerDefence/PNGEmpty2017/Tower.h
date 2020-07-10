@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GL/freeglut.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -10,17 +11,23 @@ public:
 	~Tower();
 
 public:
-	void DrawBaseTower(int x, int y, float hp, int atk);
-	void DrawSlowTower(int x, int y, float hp, int atk);
-	void DrawBlock(int x, int y, float hp, int atk);
-	void DrawTrap(int x, int y, float hp, int atk);
+	void DrawBaseTower();
+	void Damage(int d);
 
-	void Damage(int d, float hp);
+	void update(double dt);
 public:
 	bool isActive;
+
+	bool canDamage;
+	float damageTime;
+	float damageTimeRate;
+
 	int radius;
 
-	float hp;
+	int x, y;
+	int CurTower;
+
+	int hp;
 	int atk;
 	int towerNum;
 };

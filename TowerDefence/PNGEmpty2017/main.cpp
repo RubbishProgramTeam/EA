@@ -6,9 +6,12 @@
 using namespace std;
 
 //User define
-#include "BaseTower.h"
 #include "Tower.h"
+#include "Enemy.h"
+
 #include <list>
+#include <stdlib.h>;
+#include <time.h>;
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -19,20 +22,30 @@ using namespace std;
 #define MAX_TOWER_NUM 114
 
 //User public
-list<int> towerList;
-
 int mouse_x;
 int mouse_y;
-int CurTower;
+
+int CurTower = 1;
 bool isGameOver;
 int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 
+int money;
+
 Tower t[MAX_TOWER_NUM];
+list<Tower*> *TowerList;
+
+Enemy e[MAX_ENEMY_NUM];
 
 void GameInit() {
 	isGameOver = false;
+
+	money = 100;
+
+	TowerList = new list<Tower*>();
+
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
 		t[i].isActive = false;
+		e[i].isActive = false;
 		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
 			GameBoard[i][j] = 0;
 			//GameBoard[i][j] = 0; emtry
@@ -42,6 +55,7 @@ void GameInit() {
 }
 
 void DrawGameBoard() {
+	//StoreBoard
 	glColor3f(0.73, 0.45, 0.33);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
@@ -50,6 +64,7 @@ void DrawGameBoard() {
 	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
 	glEnd();
 
+	//GameBoard Line
 	glLineWidth(2);
 	glColor3f(0, 0, 0);
 	for (int i = 0; i < GAMEBOARD_HEIGTH; i++) {
@@ -66,7 +81,8 @@ void DrawGameBoard() {
 		glEnd();
 	}
 
-	glColor3f(0.57, 0.89, 0.25);
+	//GameBoard
+	glColor3f(1, 0.89, 0.25);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, 0);
 	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
@@ -96,24 +112,25 @@ void mouseClick(int button, int state, int x, int y) {
 				return;
 			}
 			
-			if (CurTower = 1) {
-				for (int i = 0; i < MAX_TOWER_NUM; i++) {
-					if (towerList.size() < MAX_TOWER_NUM) {
-						t[i].isActive = true;
-						GameBoard[mouse_x][mouse_y] = 1;
-						towerList.push_back(i);
-
-						return;
-					}
-				}	
+			Tower *newTower = new Tower();
+			newTower->isActive = true;
+			newTower->x = mouse_x;
+			newTower->y = mouse_y;
+			newTower->CurTower = CurTower;
+	
+			TowerList->push_back(newTower);
+			
+			if (newTower->CurTower != 0) {
+				GameBoard[mouse_x][mouse_y] = 1;
 			}
-		}
-		else {
-			//store area
-			cout << "Clicked on store" << endl;   //debug
+
+			//cout << newTower->x << " " << newTower->y << endl; //debug
 		}
 	}
-
+	else if(mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y >= GAMEBOARD_HEIGTH){
+		//store area
+		cout << "Clicked on store" << endl;   //debug
+	}
 }
 
 void initRendering() {
@@ -138,13 +155,8 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-
-	for (int i = 0; i < MAX_TOWER_NUM; i++) {
-		if (t[i].isActive && mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
-			t[i].hp = 5;
-			t[i].atk = 1;
-			t[i].DrawBaseTower(mouse_x, mouse_y, t[i].hp,t[i].atk);
-		}
+	for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+		(*it)->DrawBaseTower();
 	}
 
 	DrawGameBoard();
@@ -159,6 +171,8 @@ void update(int value) {
 }
 
 int main(int argc, char **argv) {
+	srand(time(0));
+
 	cout << "Programmer: <Lau Chin Ho 190034501>\n";
 	cout << "Compiled on " << __DATE__ << ", " << __TIME__ << std::endl << std::endl;
 
@@ -168,7 +182,7 @@ int main(int argc, char **argv) {
 	glutInitWindowSize(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));               // set the window size
 
 	// create the window
-	glutCreateWindow("Introduction to OpenGL");
+	glutCreateWindow("Tower Defence");
 	initRendering();                            // initialize rendering
 
 	// register handler functions
