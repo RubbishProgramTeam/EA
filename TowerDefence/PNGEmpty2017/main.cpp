@@ -129,8 +129,64 @@ void mouseClick(int button, int state, int x, int y) {
 	}
 	else if(mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y >= GAMEBOARD_HEIGTH){
 		//store area
+		if (mouse_x >= 4 && mouse_x <= 6 && mouse_y >= 6 && mouse_y <= 9) {
+
+			cout << "Button_1" << endl;   //debug
+		}
+		if (mouse_x >= 7 && mouse_x <= 9 && mouse_y >= 6 && mouse_y <= 9) {
+
+			cout << "Button_2" << endl;   //debug
+		}
+		if (mouse_x >= 10 && mouse_x <= 12 && mouse_y >= 6 && mouse_y <= 9) {
+
+			cout << "Button_3" << endl;   //debug
+		}
+		if (mouse_x >= 13 && mouse_x <= 15 && mouse_y >= 6 && mouse_y <= 9) {
+
+			cout << "Button_4" << endl;   //debug
+		}
+
+		//cout << "mouse_x=" << mouse_x << " mouse_y=" << mouse_y << endl;   //debug
 		cout << "Clicked on store" << endl;   //debug
 	}
+}
+
+void Draw_UI() {
+	//Draw Button 1
+	glBegin(GL_POLYGON);
+	glColor3f(0, 1, 0);
+	glVertex2f(120, 180);
+	glVertex2f(210, 180);
+	glVertex2f(210, 360);
+	glVertex2f(120, 360);
+	glEnd();
+
+	//Draw Button 2
+	glBegin(GL_POLYGON);
+	glColor3f(0.58, 0, 0.83);
+	glVertex2f(210, 180);
+	glVertex2f(300, 180);
+	glVertex2f(300, 360);
+	glVertex2f(210, 360);
+	glEnd();
+
+	//Draw Button 3
+	glBegin(GL_POLYGON);
+	glColor3f(0, 0, 1);
+	glVertex2f(300, 180);
+	glVertex2f(390, 180);
+	glVertex2f(390, 360);
+	glVertex2f(300, 360);
+	glEnd();
+
+	//Draw Button 4
+	glBegin(GL_POLYGON);
+	glColor3f(1, 0.75, 0.8);
+	glVertex2f(390, 180);
+	glVertex2f(480, 180);
+	glVertex2f(480, 360);
+	glVertex2f(390, 360);
+	glEnd();
 }
 
 void initRendering() {
@@ -158,6 +214,13 @@ void display() {
 	for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
 		(*it)->DrawBaseTower();
 	}
+
+	//Draw UI
+	glColor3f(0, 0, 0);
+	glRasterPos2f(5, 270);
+	string money_UI = "Money:" + to_string(money);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
+	Draw_UI();						//Button only
 
 	DrawGameBoard();
 

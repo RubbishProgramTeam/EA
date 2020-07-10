@@ -1,27 +1,15 @@
-﻿  Enemy.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(11): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Tower.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(33): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(41): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(47): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(67): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-  main.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(11): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(13): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(14): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(59): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(72): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(73): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(79): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(80): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(85): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(174): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-  PNGEmpty2017.vcxproj -> C:\Users\User\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe
+﻿  main.cpp
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\enemy.h(11): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\enemy.h(12): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(13): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(14): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(59): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(72): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(73): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(79): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(80): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(85): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(166): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(184): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\downloads\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(237): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+  PNGEmpty2017.vcxproj -> C:\Users\user\Downloads\EA-master\EA-master\TowerDefence\Debug\PNGEmpty2017.exe
