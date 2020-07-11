@@ -40,7 +40,7 @@ int money;
 int towerMoney = 0;
 bool isBuild;
 
-int CurScene = 0;
+int CurScene = 2;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -313,6 +313,9 @@ void cameraSetup(int w, int h) {
 	glLoadIdentity();                           // reset projection matrix
 	//gluPerspective(45.0, 1, 1.0, 100.0);        // set up a perspective projection matrix
 	gluOrtho2D(0, GRID_SIZE * GAMEBOARD_WIDTH, 0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+
+	// Auto resize window if user change the size 
+	//glutReshapeWindow(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
 }
 
 void display() {
@@ -345,9 +348,21 @@ void display() {
 
 void update(int value) {
 
-
 	glutPostRedisplay();
 	glutTimerFunc(30, update, 0);
+}
+
+void FixWindowSize() {
+	HWND hwnd = FindWindow(NULL, "Tower Defence");    // Get window HWND
+	if (hwnd)
+	{
+		LONG style;
+		style = GetWindowLong(hwnd, GWL_STYLE);              // Get window style
+		style &= ~WS_THICKFRAME;                                       // Disable window resizable border
+		style &= ~WS_MINIMIZEBOX;                                     // Disable window minimum button
+		style &= ~WS_MAXIMIZEBOX;                                    // Disable window maximum button
+		SetWindowLong(hwnd, GWL_STYLE, style);                 // Set window style
+	}
 }
 
 int main(int argc, char **argv) {
@@ -373,6 +388,9 @@ int main(int argc, char **argv) {
 
 
 	GameInit();
+
+	// Disable Window Resizing
+	FixWindowSize();
 
 	glutMainLoop();                             // run GLUT mainloop
 	return(0);                                  // this line is never reached
