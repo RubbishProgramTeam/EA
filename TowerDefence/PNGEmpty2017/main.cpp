@@ -20,24 +20,55 @@ using namespace std;
 #define GAMEBOARD_WIDTH 22
 #define GAMEBOARD_HEIGTH 6
 #define MAX_TOWER_NUM 114
+#define MIN_MONEY 0
 
 //User public
+GLuint BaseTowerImage;
+GLuint SlowTowerImage;
+GLuint BlockImage;
+GLuint TrapImage;
+
 int mouse_x;
 int mouse_y;
 
-int CurTower = 1;
+int CurTower = 0;
 bool isGameOver;
+
 int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 
 int money;
+int towerMoney = 0;
+bool isBuild;
+
+int CurScene = 0;
+//CurScene = 0 //Title Scene
+//CurScene = 1 //How To Play Scene
+//CurScene = 2 //Game Scene
+//CurScene = 3 //GameOverFunc
 
 Tower t[MAX_TOWER_NUM];
 list<Tower*> *TowerList;
 
 Enemy e[MAX_ENEMY_NUM];
 
+void TitleScene() {
+	glColor3f(1, 0.89, 0.25);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, 0);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, 0);
+	glEnd();
+}
+
+void HowToPlayScene() {
+	//TODO: Show How To Play;
+}
+
 void GameInit() {
 	isGameOver = false;
+
+	CurTower = 0;
 
 	money = 100;
 
@@ -52,6 +83,18 @@ void GameInit() {
 			//GameBoard[i][j] = 1; HaveThing
 		}
 	}
+
+	Sprite BaseID("Image/BaseTower.png");
+	BaseTowerImage = BaseID.GenTexture();
+
+	Sprite SlowID("Image/SlowTower.png");
+	SlowTowerImage = SlowID.GenTexture();
+
+	Sprite TrapID("Image/Trap.png");
+	TrapImage = TrapID.GenTexture();
+
+	Sprite BlockID("Image/Block.png");
+	BlockImage = BlockID.GenTexture();
 }
 
 void DrawGameBoard() {
@@ -97,96 +140,163 @@ void mouseClick(int button, int state, int x, int y) {
 		return;
 	}
 
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		mouse_x = x;
-		mouse_y = (GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH)) - y;
+	if (CurScene == 0) {
+		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+			//TODO: Create a button, press to go in how to play scene(CurScene 1)
+			CurScene = 2;
 
-		mouse_x = mouse_x / GRID_SIZE;
-		mouse_y = mouse_y / GRID_SIZE;
-
-		//cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
-
-		if (mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
-			if (GameBoard[mouse_x][mouse_y] != 0) {
-				MessageBox(NULL, "Please choose other grid!", "ERROR", MB_OK | MB_ICONERROR);
-				return;
-			}
-			
-			Tower *newTower = new Tower();
-			newTower->isActive = true;
-			newTower->x = mouse_x;
-			newTower->y = mouse_y;
-			newTower->CurTower = CurTower;
-	
-			TowerList->push_back(newTower);
-			
-			if (newTower->CurTower != 0) {
-				GameBoard[mouse_x][mouse_y] = 1;
-			}
-
-			//cout << newTower->x << " " << newTower->y << endl; //debug
+			//TODO: Create a button, press to go in the game (CurScene 2)
 		}
 	}
-	else if(mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y >= GAMEBOARD_HEIGTH){
-		//store area
-		if (mouse_x >= 4 && mouse_x <= 6 && mouse_y >= 6 && mouse_y <= 9) {
 
-			cout << "Button_1" << endl;   //debug
+	//Game Scene
+	if (CurScene == 2) {
+		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+			mouse_x = x;
+			mouse_y = (GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH)) - y;
+
+			mouse_x = mouse_x / GRID_SIZE;
+			mouse_y = mouse_y / GRID_SIZE;
+
+			//cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
+
+			if (mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
+				if (GameBoard[mouse_x][mouse_y] != 0) {
+					MessageBox(NULL, "Please choose other grid!", "Ops!", MB_OK | MB_ICONERROR);
+					return;
+				}
+
+				Tower *newTower = new Tower();
+				if (money >= towerMoney && CurTower != 0) {
+					newTower->isActive = true;
+					newTower->x = mouse_x;
+					newTower->y = mouse_y;
+					newTower->CurTower = CurTower;
+					money -= towerMoney;
+
+					TowerList->push_back(newTower);
+
+					GameBoard[mouse_x][mouse_y] = 1;
+
+				}
+				else if (money <= towerMoney) {
+					MessageBox(NULL, "You don't gave enough money!", "Ops!", MB_OK | MB_ICONEXCLAMATION);
+					return;
+				}
+
+				//cout << newTower->x << " " << newTower->y << endl; //debug
+			}
 		}
-		if (mouse_x >= 7 && mouse_x <= 9 && mouse_y >= 6 && mouse_y <= 9) {
+		if (mouse_x < GAMEBOARD_WIDTH && mouse_y <= (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH) && mouse_y > GAMEBOARD_HEIGTH) {
+			//store area
 
-			cout << "Button_2" << endl;   //debug
+			if (mouse_x >= 4 && mouse_x <= 6 && mouse_y >= 6 && mouse_y <= 9) {
+				//Base Tower
+				CurTower = 1;
+				towerMoney = 20;
+			}
+			if (mouse_x >= 8 && mouse_x <= 10 && mouse_y >= 6 && mouse_y <= 9) {
+				//SlowTower
+				CurTower = 2;
+				towerMoney = 30;
+			}
+			if (mouse_x >= 12 && mouse_x <= 14 && mouse_y >= 6 && mouse_y <= 9) {
+				//Block
+				CurTower = 4;
+				towerMoney = 10;
+			}
+			if (mouse_x >= 16 && mouse_x <= 18 && mouse_y >= 6 && mouse_y <= 9) {
+				//Trap
+				CurTower = 3;
+				towerMoney = 30;
+			}
 		}
-		if (mouse_x >= 10 && mouse_x <= 12 && mouse_y >= 6 && mouse_y <= 9) {
-
-			cout << "Button_3" << endl;   //debug
-		}
-		if (mouse_x >= 13 && mouse_x <= 15 && mouse_y >= 6 && mouse_y <= 9) {
-
-			cout << "Button_4" << endl;   //debug
-		}
-
-		//cout << "mouse_x=" << mouse_x << " mouse_y=" << mouse_y << endl;   //debug
-		cout << "Clicked on store" << endl;   //debug
 	}
 }
 
 void Draw_UI() {
-	//Draw Button 1
-	glBegin(GL_POLYGON);
-	glColor3f(0, 1, 0);
-	glVertex2f(120, 180);
-	glVertex2f(210, 180);
-	glVertex2f(210, 360);
-	glVertex2f(120, 360);
-	glEnd();
+	string towerName[5] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select"};
 
-	//Draw Button 2
-	glBegin(GL_POLYGON);
-	glColor3f(0.58, 0, 0.83);
-	glVertex2f(210, 180);
-	glVertex2f(300, 180);
-	glVertex2f(300, 360);
-	glVertex2f(210, 360);
-	glEnd();
+	glColor3f(1, 1, 0);
+	glRasterPos2f(5, 270);
+	string money_UI = "Money:" + to_string(money);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
 
-	//Draw Button 3
-	glBegin(GL_POLYGON);
-	glColor3f(0, 0, 1);
-	glVertex2f(300, 180);
-	glVertex2f(390, 180);
-	glVertex2f(390, 360);
-	glVertex2f(300, 360);
-	glEnd();
+	glColor3f(0, 0, 0);
+	glRasterPos2f(5, 220);
+	string selectTower = "SelectTower: ";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower.c_str());
 
-	//Draw Button 4
+	glRasterPos2f(5, 200);
+	if (CurTower == 1) {
+		string selectTower_UI = towerName[0];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}	
+	if (CurTower == 2) {
+		glColor3f(0.43, 1, 0.91);
+		string selectTower_UI = towerName[1];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}	
+	if (CurTower == 3) {
+		glColor3f(0.77, 0.32, 1);
+		string selectTower_UI = towerName[3];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}	
+	if (CurTower == 4) {
+		glColor3f(1, 0.55, 0.6);
+		string selectTower_UI = towerName[2];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if(CurTower == 0){
+		string selectTower_UI = towerName[4];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+
+
+	//Draw Base Tower Button
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BaseTowerImage);
 	glBegin(GL_POLYGON);
-	glColor3f(1, 0.75, 0.8);
-	glVertex2f(390, 180);
-	glVertex2f(480, 180);
-	glVertex2f(480, 360);
-	glVertex2f(390, 360);
+	glTexCoord2f(0, 0); glVertex2f(120, 180);
+	glTexCoord2f(1, 0); glVertex2f(210, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(210, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(120, 360);
 	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//Draw SlowTowerButton
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, SlowTowerImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(240, 180);
+	glTexCoord2f(1, 0); glVertex2f(330, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(330, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(240, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//Draw Block Button
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BlockImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(360, 180);
+	glTexCoord2f(1, 0); glVertex2f(450, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(450, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(360, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+
+	//Draw Trap
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, TrapImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 0); glVertex2f(580, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(580, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(480, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
 void initRendering() {
@@ -211,23 +321,30 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
-		(*it)->DrawBaseTower();
+	//ShowTitleScene
+	if (CurScene == 0) {
+		TitleScene();
+	}
+	if (CurScene == 1) {
+		//TODO: How to play Scene func;
 	}
 
-	//Draw UI
-	glColor3f(0, 0, 0);
-	glRasterPos2f(5, 270);
-	string money_UI = "Money:" + to_string(money);
-	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
-	Draw_UI();						//Button only
+	//ShowGameScene
+	if (CurScene == 2) {
+		Draw_UI();
 
-	DrawGameBoard();
+		for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+			(*it)->DrawBaseTower();
+		}
+
+		DrawGameBoard();
+	}
 
 	glutSwapBuffers();
 }
 
 void update(int value) {
+
 
 	glutPostRedisplay();
 	glutTimerFunc(30, update, 0);
@@ -253,6 +370,7 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(display);                   // Display function
 	glutTimerFunc(30, update, 0);
 	glutMouseFunc(mouseClick);
+
 
 	GameInit();
 
