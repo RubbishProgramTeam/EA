@@ -1,17 +1,18 @@
 ﻿  main.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(11): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(13): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(14): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(60): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(107): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(120): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(121): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(127): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(128): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(133): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(241): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(246): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(251): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(374): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-  PNGEmpty2017.vcxproj -> C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\enemy.h(11): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\enemy.h(12): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(13): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(14): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(68): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(99): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(142): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(155): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(156): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(162): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(163): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(168): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(285): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(290): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(295): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\vtc(第三學期)\met4335(c++)\ea\ea-master\ea-master\towerdefence\pngempty2017\main.cpp(419): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+  PNGEmpty2017.vcxproj -> C:\Users\user\Documents\VTC(第三學期)\MET4335(C++)\EA\EA-master\EA-master\TowerDefence\Debug\PNGEmpty2017.exe
