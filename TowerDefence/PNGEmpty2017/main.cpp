@@ -52,6 +52,7 @@ list<Tower*> *TowerList;
 Enemy e[MAX_ENEMY_NUM];
 
 void TitleScene() {
+
 	glColor3f(1, 0.89, 0.25);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, 0);
@@ -386,7 +387,8 @@ int main(int argc, char **argv) {
 	glutTimerFunc(30, update, 0);
 	glutMouseFunc(mouseClick);
 
-
+	//Title Scene
+	CurScene = 0;
 	GameInit();
 
 	// Disable Window Resizing
