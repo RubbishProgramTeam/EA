@@ -46,7 +46,7 @@ int money;
 int towerMoney = 0;
 bool isBuild;
 
-int CurScene = 2;
+int CurScene = 0;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -58,7 +58,15 @@ list<Tower*> *TowerList;
 Enemy e[MAX_ENEMY_NUM];
 
 void TitleScene() {
-
+	// Title 
+	glColor3f(1, 1, 1);
+	glRasterPos2f( 280, 20);
+	string TitleStr = "Press key to start";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)TitleStr.c_str());
+	
+	
+	
+	// Background
 	glColor3f(1, 0.89, 0.25);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, 0);
@@ -426,7 +434,7 @@ int main(int argc, char **argv) {
 	glutMouseFunc(mouseClick);
 
 	//Title Scene
-	CurScene = 2;
+	CurScene = 0;
 	GameInit();
 
 	// Disable Window Resizing
