@@ -25,6 +25,7 @@ using namespace std;
 #define MAX_TOWER_NUM 114
 #define MIN_MONEY 0
 #define MAX_ENEMY_NUM 100
+#define SPACEBAR 32
 
 //User public
 chrono::system_clock::time_point LastFrameTime;
@@ -46,7 +47,7 @@ int money;
 int towerMoney = 0;
 bool isBuild;
 
-int CurScene = 0;
+int CurScene;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -58,15 +59,45 @@ list<Tower*> *TowerList;
 Enemy e[MAX_ENEMY_NUM];
 
 void TitleScene() {
-	// Title 
-	glColor3f(1, 1, 1);
-	glRasterPos2f( 280, 20);
-	string TitleStr = "Press key to start";
+	// Title
+	glColor3f(1, 0, 0);
+	glRasterPos2f(250, 200);
+	string TitleStr = "Tower Defense";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)TitleStr.c_str());
-	
-	
+
+	// Press space key to start string 
+	glColor3f(0, 0, 0);
+	glRasterPos2f( 220, 100);
+	string StartStr = "Press space key to start";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)StartStr.c_str());
+
+	// Press h key to see how to play string
+	glColor3f(0, 0, 0);
+	glRasterPos2f(200, 50);
+	string HowToPlayStr = "Press H key to see how to play";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlayStr.c_str());
 	
 	// Background
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BaseTowerImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(80, 150);
+	glTexCoord2f(1, 0); glVertex2f(170, 150);
+	glTexCoord2f(1, 1); glVertex2f(170, 250);
+	glTexCoord2f(0, 1); glVertex2f(80, 250);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BlockImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(480, 150);
+	glTexCoord2f(1, 0); glVertex2f(570, 150);
+	glTexCoord2f(1, 1); glVertex2f(570, 250);
+	glTexCoord2f(0, 1); glVertex2f(480, 250);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
 	glColor3f(1, 0.89, 0.25);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, 0);
@@ -123,14 +154,14 @@ void mouseClick(int button, int state, int x, int y) {
 		return;
 	}
 
-	if (CurScene == 0) {
+	/*if (CurScene == 0) {
 		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 			//TODO: Create a button, press to go in how to play scene(CurScene 1)
 			CurScene = 2;
 
 			//TODO: Create a button, press to go in the game (CurScene 2)
 		}
-	}
+	}*/
 
 	//Game Scene
 	if (CurScene == 2) {
@@ -192,6 +223,17 @@ void mouseClick(int button, int state, int x, int y) {
 				CurTower = 3;
 				towerMoney = 30;
 			}
+		}
+	}
+}
+
+void keyboardClick(unsigned char key, int x, int y) {
+	if (CurScene == 0) {
+		if (key == SPACEBAR ) {
+			CurScene = 2;
+		}
+		else if (key == 'h') {
+			CurScene = 1;
 		}
 	}
 }
@@ -359,6 +401,7 @@ void display() {
 	if (CurScene == 0) {
 		TitleScene();
 	}
+	// Show How to play scene
 	if (CurScene == 1) {
 		//TODO: How to play Scene func;
 	}
@@ -432,6 +475,7 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(display);                   // Display function
 	glutTimerFunc(30, update, 0);
 	glutMouseFunc(mouseClick);
+	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
 	CurScene = 0;

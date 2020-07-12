@@ -1,20 +1,20 @@
 ﻿  main.cpp
-D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(11,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(12,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(16,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(17,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(27,1): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
-D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(9): message : 請參閱 'MAX_ENEMY_NUM' 之前的定義
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(70,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(85,28): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(98,27): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(99,59): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(105,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(106,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(111,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(218,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(223,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(228,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(289,20): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(416,12): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-  PNGEmpty2017.vcxproj -> D:\MET4335\TowerDefence\Debug\PNGEmpty2017.exe
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(11,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(12,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(16,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(17,10): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(27,1): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(9): message : 請參閱 'MAX_ENEMY_NUM' 之前的定義
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(101,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(116,28): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(129,27): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(130,59): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(136,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(137,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(142,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(261,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(266,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(271,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(332,20): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\IVE\Sem 3\MET4335\TowerDefence\PNGEmpty2017\main.cpp(459,12): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+  PNGEmpty2017.vcxproj -> D:\IVE\Sem 3\MET4335\TowerDefence\Debug\PNGEmpty2017.exe
