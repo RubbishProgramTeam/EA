@@ -382,7 +382,6 @@ void update(int value) {
 
 		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
 			if (e[i].x <= -1) {
-				cout << e[i].x << endl;
 				CurScene = 3;
 			}
 		}

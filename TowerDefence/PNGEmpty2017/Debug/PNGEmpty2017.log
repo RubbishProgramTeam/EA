@@ -1,4 +1,9 @@
-﻿  main.cpp
+﻿  Enemy.cpp
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(11): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(25): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(37): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+  main.cpp
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(11): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(16): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
@@ -17,4 +22,31 @@ c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(215): warni
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(220): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(281): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(409): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+  Sprite.cpp
+  Tower.cpp
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(29): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(33): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(35): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(39): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(41): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(46): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(48): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(68): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+  正在產生程式碼...
+  LINK : 最後的累加連結找不到或未建置 C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe，正在執行完整連結
+LINK : warning LNK4098: 預設的程式庫 'LIBCMTD' 與其他使用的程式庫衝突，請使用 /NODEFAULTLIB:library
+libpngd.lib(png.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(png.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngerror.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngerror.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngget.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngget.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngmem.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngmem.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngread.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngread.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrio.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrtran.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrutil.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngset.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngset.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngtrans.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngtrans.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwio.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwrite.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwrite.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwtran.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwutil.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
   PNGEmpty2017.vcxproj -> C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe
