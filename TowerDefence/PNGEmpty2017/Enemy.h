@@ -22,12 +22,13 @@ public:
 	void update(double dt);
 
 public:
-	int x, y;
+	float x, y;
 
 	int hp, atk;
 
 	int walkSpeed;
 	bool isActive;
+	bool isDead;
 
 	//Enemy list
 	//cal distance tower to enemy to check is atk(2-point distance)

@@ -9,6 +9,9 @@ using namespace std;
 #include "Tower.h"
 #include "Enemy.h"
 
+#include <chrono>
+#include <ctime>
+
 #include <list>
 #include <stdlib.h>;
 #include <time.h>;
@@ -21,8 +24,11 @@ using namespace std;
 #define GAMEBOARD_HEIGTH 6
 #define MAX_TOWER_NUM 114
 #define MIN_MONEY 0
+#define MAX_ENEMY_NUM 100
 
 //User public
+chrono::system_clock::time_point LastFrameTime;
+
 GLuint BaseTowerImage;
 GLuint SlowTowerImage;
 GLuint BlockImage;
@@ -64,38 +70,6 @@ void TitleScene() {
 
 void HowToPlayScene() {
 	//TODO: Show How To Play;
-}
-
-void GameInit() {
-	isGameOver = false;
-
-	CurTower = 0;
-
-	money = 100;
-
-	TowerList = new list<Tower*>();
-
-	for (int i = 0; i < MAX_TOWER_NUM; i++) {
-		t[i].isActive = false;
-		e[i].isActive = false;
-		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
-			GameBoard[i][j] = 0;
-			//GameBoard[i][j] = 0; emtry
-			//GameBoard[i][j] = 1; HaveThing
-		}
-	}
-
-	Sprite BaseID("Image/BaseTower.png");
-	BaseTowerImage = BaseID.GenTexture();
-
-	Sprite SlowID("Image/SlowTower.png");
-	SlowTowerImage = SlowID.GenTexture();
-
-	Sprite TrapID("Image/Trap.png");
-	TrapImage = TrapID.GenTexture();
-
-	Sprite BlockID("Image/Block.png");
-	BlockImage = BlockID.GenTexture();
 }
 
 void DrawGameBoard() {
@@ -184,7 +158,6 @@ void mouseClick(int button, int state, int x, int y) {
 					MessageBox(NULL, "You don't gave enough money!", "Ops!", MB_OK | MB_ICONEXCLAMATION);
 					return;
 				}
-
 				//cout << newTower->x << " " << newTower->y << endl; //debug
 			}
 		}
@@ -300,6 +273,55 @@ void Draw_UI() {
 	glDisable(GL_TEXTURE_2D);
 }
 
+void SpawnEnemy(int value) {
+	for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+		if (!e[i].isActive) {
+			e[i].isDead = false;
+			e[i].x = GAMEBOARD_WIDTH;
+			e[i].y = rand() % GAMEBOARD_HEIGTH;
+			e[i].walkSpeed = rand() % 2 + 1;
+			e[i].isActive = true;
+			break;
+		}
+	}
+	glutTimerFunc(5000, SpawnEnemy, 0);
+}
+
+void GameInit() {
+	SpawnEnemy(0);
+
+	isGameOver = false;
+
+	CurTower = 0;
+
+	money = 100;
+
+	TowerList = new list<Tower*>();
+
+	for (int i = 0; i < MAX_TOWER_NUM; i++) {
+		t[i].isActive = false;
+		e[i].isActive = false;
+		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
+			GameBoard[i][j] = 0;
+			//GameBoard[i][j] = 0; emtry
+			//GameBoard[i][j] = 1; HaveThing
+		}
+	}
+
+	Sprite BaseID("Image/BaseTower.png");
+	BaseTowerImage = BaseID.GenTexture();
+
+	Sprite SlowID("Image/SlowTower.png");
+	SlowTowerImage = SlowID.GenTexture();
+
+	Sprite TrapID("Image/Trap.png");
+	TrapImage = TrapID.GenTexture();
+
+	Sprite BlockID("Image/Block.png");
+	BlockImage = BlockID.GenTexture();
+}
+
+
 void initRendering() {
 	glEnable(GL_DEPTH_TEST);                    // test 3D depth
 	glEnable(GL_BLEND); 
@@ -341,6 +363,11 @@ void display() {
 			(*it)->DrawBaseTower();
 		}
 
+		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+			e[i].DrawEnemy();
+		}
+
+
 		DrawGameBoard();
 	}
 
@@ -348,6 +375,18 @@ void display() {
 }
 
 void update(int value) {
+	if (CurScene == 2) {
+		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+			e[i].update(30.0 / 1000.0);
+		}
+
+		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+			if (e[i].x <= -1) {
+				cout << e[i].x << endl;
+				CurScene = 3;
+			}
+		}
+	}
 
 	glutPostRedisplay();
 	glutTimerFunc(30, update, 0);
@@ -388,7 +427,7 @@ int main(int argc, char **argv) {
 	glutMouseFunc(mouseClick);
 
 	//Title Scene
-	CurScene = 0;
+	CurScene = 2;
 	GameInit();
 
 	// Disable Window Resizing

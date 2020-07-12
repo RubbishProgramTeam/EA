@@ -2,13 +2,12 @@
 
 Enemy::Enemy()
 {
-	isActive = true;
 	hp = 1;
 	atk = 1;
-	x = 2;
-	y = rand() % GAMEBOARD_HEIGTH;
 
 	walkSpeed = 1;
+	isActive = true;
+	isDead = false;
 }
 
 
@@ -18,9 +17,8 @@ Enemy::~Enemy()
 
 void Enemy::DrawEnemy()
 {
-	if (!isActive) {
-		return;
-	}
+	if (!isActive) return;
+
 	glBegin(GL_POLYGON);
 	glColor3f(1, 0, 0);
 	for (int i = 0; i < 360; i++) {
@@ -32,15 +30,13 @@ void Enemy::DrawEnemy()
 
 void Enemy::update(double dt)
 {
-	if (!isActive) {
-		return;
-	}
+	if (!isActive) return;
 
-	if (x > -1) {
-		x = x - (walkSpeed * dt);
+	if (!isDead) {
+		if (x > -1) 
+			x = x - (walkSpeed * dt);
 	}
 	else {
-		walkSpeed = 0;
 		isActive = false;
 	}
 }
