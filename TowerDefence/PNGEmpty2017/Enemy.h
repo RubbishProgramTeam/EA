@@ -8,9 +8,6 @@
 #define GRID_SIZE 30
 #define MAX_ENEMY_NUM 20
 
-#include <stdlib.h>;
-#include <time.h>;
-
 class Enemy
 {
 public:

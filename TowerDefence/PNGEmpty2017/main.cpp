@@ -28,7 +28,6 @@ using namespace std;
 #define SPACEBAR 32
 
 //User public
-chrono::system_clock::time_point LastFrameTime;
 
 GLuint BaseTowerImage;
 GLuint SlowTowerImage;
@@ -48,15 +47,18 @@ int towerMoney = 0;
 bool isBuild;
 
 int CurScene;
+
+int enemyWalkSpeed;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
-//CurScene = 3 //GameOverFunc
+//CurScene = 3 //GameOver Scene
 
 Tower t[MAX_TOWER_NUM];
 list<Tower*> *TowerList;
 
 Enemy e[MAX_ENEMY_NUM];
+list<Enemy*> *EnemyList;
 
 void TitleScene() {
 	// Title
@@ -190,6 +192,8 @@ void mouseClick(int button, int state, int x, int y) {
 
 					TowerList->push_back(newTower);
 
+					//cout << TowerList->size() << endl;
+
 					GameBoard[mouse_x][mouse_y] = 1;
 
 				}
@@ -229,11 +233,24 @@ void mouseClick(int button, int state, int x, int y) {
 
 void keyboardClick(unsigned char key, int x, int y) {
 	if (CurScene == 0) {
-		if (key == SPACEBAR ) {
+		if (key == SPACEBAR) {
 			CurScene = 2;
 		}
 		else if (key == 'h') {
 			CurScene = 1;
+		}
+	}
+
+	else if (CurScene == 2) {		//Debug (Enemy dead)
+		if (key == SPACEBAR) {
+			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
+				if ((*it)->isActive) {
+					(*it)->hp = 0;
+					EnemyList->remove(*it);
+				}
+				cout << EnemyList->size() << endl;
+				break;
+			}
 		}
 	}
 }
@@ -324,21 +341,23 @@ void Draw_UI() {
 }
 
 void SpawnEnemy(int value) {
-	for (int i = 0; i < MAX_ENEMY_NUM; i++) {
-		if (!e[i].isActive) {
-			e[i].isDead = false;
-			e[i].x = GAMEBOARD_WIDTH;
-			e[i].y = rand() % GAMEBOARD_HEIGTH;
-			e[i].walkSpeed = rand() % 2 + 1;
-			e[i].isActive = true;
-			break;
-		}
-	}
+	Enemy *newEnemy = new Enemy();
+
+	newEnemy->isDead = false;
+	newEnemy->hp = 1;
+
+	newEnemy->x = GAMEBOARD_WIDTH;
+	newEnemy->y = rand() % GAMEBOARD_HEIGTH;
+
+	newEnemy->walkSpeed = rand() % 2 + 1;
+	newEnemy->isActive = true;
+
+	EnemyList->push_back(newEnemy);
+
 	glutTimerFunc(5000, SpawnEnemy, 0);
 }
 
 void GameInit() {
-	SpawnEnemy(0);
 
 	isGameOver = false;
 
@@ -348,14 +367,19 @@ void GameInit() {
 
 	TowerList = new list<Tower*>();
 
+	EnemyList = new list<Enemy*>();
+
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
 		t[i].isActive = false;
-		e[i].isActive = false;
 		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
 			GameBoard[i][j] = 0;
 			//GameBoard[i][j] = 0; emtry
 			//GameBoard[i][j] = 1; HaveThing
 		}
+	}
+
+	for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+		e[i].isActive = false;
 	}
 
 	Sprite BaseID("Image/BaseTower.png");
@@ -408,18 +432,19 @@ void display() {
 
 	//ShowGameScene
 	if (CurScene == 2) {
-		Draw_UI();
 
-		for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
-			(*it)->DrawBaseTower();
-		}
+			Draw_UI();
 
-		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
-			e[i].DrawEnemy();
-		}
+			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+				(*it)->DrawBaseTower();
+			}
+
+			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
+				(*it)->DrawEnemy();
+			}
 
 
-		DrawGameBoard();
+			DrawGameBoard();
 	}
 
 	glutSwapBuffers();
@@ -427,13 +452,20 @@ void display() {
 
 void update(int value) {
 	if (CurScene == 2) {
-		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
-			e[i].update(30.0 / 1000.0);
+		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
+			(*it)->update(30.0/1000.0);
+			if ((*it)->x <= -1) {
+				//GameOver
+				CurScene = 3;
+			}
 		}
 
-		for (int i = 0; i < MAX_ENEMY_NUM; i++) {
-			if (e[i].x <= -1) {
-				CurScene = 3;
+		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
+			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
+				if ((*eit)->x - (*tit)->x <= 1) {
+					(*eit)->walkSpeed = 0;
+					(*tit)->Damage((*eit)->atk);
+				}
 			}
 		}
 	}
@@ -458,7 +490,7 @@ void FixWindowSize() {
 int main(int argc, char **argv) {
 	srand(time(0));
 
-	cout << "Programmer: <Lau Chin Ho 190034501>\n";
+	cout << "Programmer: <Tower Defence>\n";
 	cout << "Compiled on " << __DATE__ << ", " << __TIME__ << std::endl << std::endl;
 
 	// init GLUT and create Window
@@ -478,9 +510,9 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
-	CurScene = 0;
+	CurScene = 2;
 	GameInit();
-
+	SpawnEnemy(0);
 	// Disable Window Resizing
 	FixWindowSize();
 

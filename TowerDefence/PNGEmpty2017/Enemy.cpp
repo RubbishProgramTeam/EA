@@ -2,12 +2,6 @@
 
 Enemy::Enemy()
 {
-	hp = 1;
-	atk = 1;
-
-	walkSpeed = 1;
-	isActive = true;
-	isDead = false;
 }
 
 
@@ -31,6 +25,10 @@ void Enemy::DrawEnemy()
 void Enemy::update(double dt)
 {
 	if (!isActive) return;
+
+	if (hp <= 0) {
+		isDead = true;
+	}
 
 	if (!isDead) {
 		if (x > -1) 
