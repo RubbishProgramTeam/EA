@@ -27,7 +27,12 @@ public:
 	int x, y;
 	int CurTower;
 
-	int hp;
+	float hp;
+	float MaxHP;
+
 	int atk;
 	int towerNum;
+
+	int hpBar;
+	float perHP;
 };

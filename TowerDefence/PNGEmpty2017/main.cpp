@@ -184,11 +184,35 @@ void mouseClick(int button, int state, int x, int y) {
 
 				Tower *newTower = new Tower();
 				if (money >= towerMoney && CurTower != 0) {
-					newTower->isActive = true;
 					newTower->x = mouse_x;
 					newTower->y = mouse_y;
+
+					newTower->perHP = newTower->hp / newTower->MaxHP;
+
 					newTower->CurTower = CurTower;
+					if (CurTower == 1) {
+						newTower->hp = 5.0;
+						newTower->MaxHP = newTower->hp;
+					}
+					else if (CurTower == 2) {
+						newTower->hp = 7.0;
+						newTower->MaxHP = newTower->hp;
+					}
+					else if (CurTower == 3) {
+						newTower->hp = 1.0;
+						newTower->MaxHP = newTower->hp;
+					}
+					else if (CurTower == 4) {
+						newTower->hp = 10.0;
+						newTower->MaxHP = newTower->hp;
+					}
+
+					newTower->damageTimeRate = 2;
+					newTower->damageTime = 0;
+
 					money -= towerMoney;
+
+					newTower->isActive = true;
 
 					TowerList->push_back(newTower);
 
@@ -340,21 +364,36 @@ void Draw_UI() {
 	glDisable(GL_TEXTURE_2D);
 }
 
+double fRand(float fMin, float fMax)
+{
+	float f = (float)rand() / RAND_MAX;
+	return fMin + f * (fMax - fMin);
+}
+
 void SpawnEnemy(int value) {
 	Enemy *newEnemy = new Enemy();
 
 	newEnemy->isDead = false;
+	newEnemy->isTouch = false;
+	newEnemy->isSlow = false;
+
+	newEnemy->slowTimerRate = 5;
+	newEnemy->slowSpeed = 0.8;
+
 	newEnemy->hp = 1;
+	newEnemy->atk = 1;
 
 	newEnemy->x = GAMEBOARD_WIDTH;
 	newEnemy->y = rand() % GAMEBOARD_HEIGTH;
-
-	newEnemy->walkSpeed = rand() % 2 + 1;
+	newEnemy->walkSpeed = fRand(1.5, 2.5);
+	newEnemy->saveSpeed = newEnemy->walkSpeed;
 	newEnemy->isActive = true;
+
+	cout << newEnemy->walkSpeed << endl;
 
 	EnemyList->push_back(newEnemy);
 
-	glutTimerFunc(5000, SpawnEnemy, 0);
+	glutTimerFunc(7000, SpawnEnemy, 0);
 }
 
 void GameInit() {
@@ -454,6 +493,7 @@ void update(int value) {
 	if (CurScene == 2) {
 		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
 			(*it)->update(30.0/1000.0);
+
 			if ((*it)->x <= -1) {
 				//GameOver
 				CurScene = 3;
@@ -461,11 +501,29 @@ void update(int value) {
 		}
 
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
+			bool isCon = false;
+
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
-				if ((*eit)->x - (*tit)->x <= 1) {
-					(*eit)->walkSpeed = 0;
+				float d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
+				float d2 = sqrtf((((*eit)->x - (*eit)->x) * ((*eit)->x - (*eit)->x)) + (((*eit)->y - (*eit)->y) * ((*eit)->y - (*eit)->y)));
+				
+				if (d <= 1 && (*eit)->y == (*tit)->y) {
+					(*eit)->isTouch = true;
+					isCon = true;
 					(*tit)->Damage((*eit)->atk);
 				}
+			}
+
+			if (!isCon) {
+				(*eit)->isTouch = false;
+			}
+		}
+
+		for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
+			(*tit)->update(30.0 / 1000.0);
+			if ((*tit)->hp == 0) {
+				TowerList->remove((*tit));
+				break;
 			}
 		}
 	}

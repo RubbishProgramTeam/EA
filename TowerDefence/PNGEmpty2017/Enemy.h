@@ -23,10 +23,16 @@ public:
 
 	int hp, atk;
 
-	int walkSpeed;
+	float walkSpeed;
+	int saveSpeed;
 	bool isActive;
 	bool isDead;
 
+	bool isTouch;
+
+	float slowSpeed;
+	float slowTimer, slowTimerRate;
+	bool isSlow;
 	//Enemy list
 	//cal distance tower to enemy to check is atk(2-point distance)
 };

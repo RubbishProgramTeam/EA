@@ -10,9 +10,12 @@ c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(132): warni
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(138): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(139): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(144): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(277): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(282): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(287): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(350): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(491): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(301): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(306): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(311): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(381): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(387): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(388): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(389): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(549): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   PNGEmpty2017.vcxproj -> C:\Users\User\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe

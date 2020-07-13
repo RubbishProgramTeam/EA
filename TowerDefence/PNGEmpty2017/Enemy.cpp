@@ -26,13 +26,22 @@ void Enemy::update(double dt)
 {
 	if (!isActive) return;
 
+	if (!isSlow) {
+		slowTimer = slowTimerRate;
+	}
+
 	if (hp <= 0) {
 		isDead = true;
 	}
 
 	if (!isDead) {
-		if (x > -1) 
+		if (x > -1 && !isTouch && !isSlow)
 			x = x - (walkSpeed * dt);
+
+		if (x > -1 && !isTouch && isSlow && slowTimer > 0) {
+			slowTimer -= dt;
+			x = x - (walkSpeed * slowSpeed * dt);
+		}
 	}
 	else {
 		isActive = false;
