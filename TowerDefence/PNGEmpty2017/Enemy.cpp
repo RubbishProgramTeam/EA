@@ -38,6 +38,11 @@ void Enemy::DrawEnemy()
 
 }
 
+void Enemy::Damage(int d)
+{
+	hp -= d;
+}
+
 void Enemy::update(double dt)
 {
 	if (!isActive) return;
@@ -61,6 +66,9 @@ void Enemy::update(double dt)
 		if (x > -1 && !isTouch && isSlow && slowTimer > 0) {
 			slowTimer -= dt;
 			x = x - (walkSpeed * slowSpeed * dt);
+		}
+		if (slowTimer <= 0) {
+			isSlow = false;
 		}
 	}
 	else {

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include "GL/freeglut.h"
 
@@ -7,11 +9,16 @@
 #define GAMEBOARD_WIDTH 22
 #define GAMEBOARD_HEIGTH 6
 
-class Bullet
-{
+class Bullet{
 public:
 	Bullet();
 	~Bullet();
+
+public:
+	void Draw();
+
+	void update(double dt);
+
 public:
 	int bulletType;
 
@@ -19,11 +26,11 @@ public:
 	float fireTime, fireTimeRate;
 	float bPos_x, bPos_y;
 
+	int atk;
+
+	bool isCon;
 	bool isActive;
 
 	int getCurTower;
-public:
-	void DrawBullet();
-	void update(double dt);
 };
 

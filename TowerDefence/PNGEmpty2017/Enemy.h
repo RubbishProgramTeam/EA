@@ -1,3 +1,6 @@
+
+#pragma once
+
 #include "GL/freeglut.h"
 
 #define _USE_MATH_DEFINES
@@ -16,6 +19,8 @@ public:
 
 public:
 	void DrawEnemy();
+	void Damage(int d);
+
 	void update(double dt);
 
 public:

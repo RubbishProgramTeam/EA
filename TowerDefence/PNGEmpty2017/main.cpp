@@ -63,8 +63,9 @@ list<Tower*> *TowerList;
 Enemy e[MAX_ENEMY_NUM];
 list<Enemy*> *EnemyList;
 
-Bullet b[MAX_BULLET_NUM];
-list<Bullet*> *BulletList;
+float bPos_x, bPos_y;
+float bulletSpeed;
+int bulletType;
 
 void TitleScene() {
 	// Title
@@ -156,6 +157,42 @@ void DrawGameBoard() {
 	glEnd();
 }
 
+double fRand(float fMin, float fMax)
+{
+	float f = (float)rand() / RAND_MAX;
+	return fMin + f * (fMax - fMin);
+}
+
+
+void SpawnEnemy(int value) {
+	Enemy *newEnemy = new Enemy();
+
+	newEnemy->isDead = false;
+	newEnemy->isTouch = false;
+	newEnemy->isSlow = false;
+
+	newEnemy->slowTimerRate = 5;
+	newEnemy->slowSpeed = 0.5;
+
+	//newEnemy->hp = rand() % 5 + 2;
+	newEnemy->hp = 1;
+	newEnemy->maxHP = newEnemy->hp;
+
+	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
+
+	newEnemy->atk = 1;
+
+	newEnemy->x = GAMEBOARD_WIDTH;
+	newEnemy->y = rand() % GAMEBOARD_HEIGTH;
+	newEnemy->walkSpeed = fRand(1.5, 2.5);
+	newEnemy->saveSpeed = newEnemy->walkSpeed;
+	newEnemy->isActive = true;
+
+	EnemyList->push_back(newEnemy);
+
+	glutTimerFunc(7000, SpawnEnemy, 0);
+}
+
 void mouseClick(int button, int state, int x, int y) {
 
 	if (isGameOver) {
@@ -189,25 +226,22 @@ void mouseClick(int button, int state, int x, int y) {
 				}
 
 				Tower *newTower = new Tower();
-				Bullet *newBullet = new Bullet();
 
 				if (money >= towerMoney && CurTower != 0) {
 					newTower->x = mouse_x;
 					newTower->y = mouse_y;
-
-					/*newTower->bPos_x = newTower->x;
-					newTower->bPos_y = newTower->y;
-					newTower->bulletSpeed = 2;*/
 
 					newTower->perHP = newTower->hp / newTower->MaxHP;
 
 					newTower->CurTower = CurTower;
 					if (CurTower == 1) {
 						newTower->hp = 5.0;
+						newTower->atk = 2;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 2) {
 						newTower->hp = 7.0;
+						newTower->atk = 0;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 3) {
@@ -231,11 +265,6 @@ void mouseClick(int button, int state, int x, int y) {
 					//cout << TowerList->size() << endl;
 
 					GameBoard[mouse_x][mouse_y] = 1;
-					if (newBullet->fireTime < 0) {
-						newBullet->bPos_x = newTower->x;
-						newBullet->bPos_y = newTower->y;
-
-					}
 				}
 				else if (money <= towerMoney) {
 					MessageBox(NULL, "You don't gave enough money!", "Ops!", MB_OK | MB_ICONEXCLAMATION);
@@ -275,22 +304,16 @@ void keyboardClick(unsigned char key, int x, int y) {
 	if (CurScene == 0) {
 		if (key == SPACEBAR) {
 			CurScene = 2;
+			if (isFirst) {
+				glutTimerFunc(3000, SpawnEnemy, 0);
+				isFirst = false;
+			}
+			else {
+				SpawnEnemy(0);
+			}
 		}
 		else if (key == 'h') {
 			CurScene = 1;
-		}
-	}
-
-	else if (CurScene == 2) {		//Debug (Enemy dead)
-		if (key == SPACEBAR) {
-			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
-				if ((*it)->isActive) {
-					(*it)->hp = 0;
-					EnemyList->remove(*it);
-				}
-				cout << EnemyList->size() << endl;
-				break;
-			}
 		}
 	}
 }
@@ -349,10 +372,10 @@ void Draw_UI() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, SlowTowerImage);
 	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(240, 180);
-	glTexCoord2f(1, 0); glVertex2f(330, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(330, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(240, 360);
+	glTexCoord2f(0, 0); glVertex2f(210, 180);
+	glTexCoord2f(1, 0); glVertex2f(300, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(300, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(210, 360);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -360,10 +383,10 @@ void Draw_UI() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, BlockImage);
 	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(360, 180);
-	glTexCoord2f(1, 0); glVertex2f(450, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(450, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(360, 360);
+	glTexCoord2f(0, 0); glVertex2f(300, 180);
+	glTexCoord2f(1, 0); glVertex2f(390, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(390, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(300, 360);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -372,51 +395,23 @@ void Draw_UI() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, TrapImage);
 	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(480, 180);
-	glTexCoord2f(1, 0); glVertex2f(580, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(580, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(480, 360);
+	glTexCoord2f(0, 0); glVertex2f(390, 180);
+	glTexCoord2f(1, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(480, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(390, 360);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-}
 
-double fRand(float fMin, float fMax)
-{
-	float f = (float)rand() / RAND_MAX;
-	return fMin + f * (fMax - fMin);
-}
-
-void SpawnEnemy(int value) {
-	Enemy *newEnemy = new Enemy();
-
-	newEnemy->isDead = false;
-	newEnemy->isTouch = false;
-	newEnemy->isSlow = false;
-
-	newEnemy->slowTimerRate = 5;
-	newEnemy->slowSpeed = 0.8;
-
-	newEnemy->hp = rand() % 5 + 2;
-	newEnemy->maxHP = newEnemy->hp;
-
-	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
-
-	newEnemy->atk = 1;
-
-	newEnemy->x = GAMEBOARD_WIDTH;
-	newEnemy->y = rand() % GAMEBOARD_HEIGTH;
-	newEnemy->walkSpeed = fRand(1.5, 2.5);
-	newEnemy->saveSpeed = newEnemy->walkSpeed;
-	newEnemy->isActive = true;
-
-	EnemyList->push_back(newEnemy);
-
-	glutTimerFunc(7000, SpawnEnemy, 0);
-}
-void SpawnBullet(int value) {
-	Bullet *newBulelt = new Bullet();
-
-
+	//Add Money Tower
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, TrapImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(390, 180);
+	glTexCoord2f(1, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(480, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(390, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
 void GameInit() {
@@ -430,6 +425,10 @@ void GameInit() {
 	TowerList = new list<Tower*>();
 
 	EnemyList = new list<Enemy*>();
+
+	for (int i = 0; i < MAX_BULLET_NUM; i++) {
+
+	}
 
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
 		t[i].isActive = false;
@@ -497,8 +496,11 @@ void display() {
 			Draw_UI();
 
 			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+				(*it)->DrawBullet();
+			}
+
+			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
 				(*it)->DrawBaseTower();
-				//(*it)->DrawBullet();
 			}
 
 			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
@@ -510,6 +512,7 @@ void display() {
 
 	glutSwapBuffers();
 }
+
 
 void update(int value) {
 	if (CurScene == 2) {
@@ -523,18 +526,34 @@ void update(int value) {
 				CurScene = 3;
 			}
 		}
+
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
 			bool isCon = false;
 
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 				float d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-				float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
+				//float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
 				
+				//Enemy atk Tower
 				if (d <= 1 && (*eit)->y == (*tit)->y) {
 					(*eit)->isTouch = true;
 					isCon = true;
 					(*tit)->Damage((*eit)->atk);
 				}
+
+				//Tower Atk Enemy
+				/*if (d2 <= 1 && (*eit)->y == (*tit)->bPos_y) {
+					(*eit)->Damage((*tit)->atk);					
+					(*tit)->bPos_x = (*tit)->x;
+					if ((*tit)->bulletType == 2) {
+						(*eit)->isSlow = true;
+					}
+				}*/
+			}
+
+			if ((*eit)->hp <= 0) {
+				EnemyList->remove(*eit);
+				break;
 			}
 
 			if (!isCon) {
@@ -544,7 +563,7 @@ void update(int value) {
 
 		for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 			(*tit)->update(30.0 / 1000.0);
-			(*tit)->DrawBullet();
+			//(*tit)->DrawBullet();
 			if ((*tit)->hp == 0) {
 				TowerList->remove((*tit));
 				break;
@@ -596,13 +615,6 @@ int main(int argc, char **argv) {
 	CurScene = 2;
 	GameInit();
 
-	/*if (isFirst) {
-		glutTimerFunc(3000, SpawnEnemy, 0);
-		isFirst = false;
-	}
-	else {
-		SpawnEnemy(0);
-	}*/
 
 	// Disable Window Resizing
 	FixWindowSize();
