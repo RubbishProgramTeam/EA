@@ -63,9 +63,9 @@ list<Tower*> *TowerList;
 Enemy e[MAX_ENEMY_NUM];
 list<Enemy*> *EnemyList;
 
-float bPos_x, bPos_y;
+/*float bPos_x, bPos_y;
 float bulletSpeed;
-int bulletType;
+int bulletType;*/
 
 void TitleScene() {
 	// Title
@@ -175,7 +175,7 @@ void SpawnEnemy(int value) {
 	newEnemy->slowSpeed = 0.5;
 
 	//newEnemy->hp = rand() % 5 + 2;
-	newEnemy->hp = 1;
+	newEnemy->hp = 5;
 	newEnemy->maxHP = newEnemy->hp;
 
 	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
@@ -237,11 +237,15 @@ void mouseClick(int button, int state, int x, int y) {
 					if (CurTower == 1) {
 						newTower->hp = 5.0;
 						newTower->atk = 2;
+						newTower->fire = 2;
+						newTower->fireRate = 2;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 2) {
 						newTower->hp = 7.0;
-						newTower->atk = 0;
+						newTower->atk = 1;
+						newTower->fire = 3;
+						newTower->fireRate = 3;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 3) {
@@ -261,8 +265,6 @@ void mouseClick(int button, int state, int x, int y) {
 					newTower->isActive = true;
 
 					TowerList->push_back(newTower);
-
-					//cout << TowerList->size() << endl;
 
 					GameBoard[mouse_x][mouse_y] = 1;
 				}
@@ -531,14 +533,25 @@ void update(int value) {
 			bool isCon = false;
 
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
+				//Tower and Enemy distance;
 				float d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-				//float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
+
+				cout << d << endl;
+
+				float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
 				
 				//Enemy atk Tower
 				if (d <= 1 && (*eit)->y == (*tit)->y) {
 					(*eit)->isTouch = true;
 					isCon = true;
 					(*tit)->Damage((*eit)->atk);
+				}
+
+				if (d2 <= 1 && (*eit)->y == (*tit)->y) {
+					(*eit)->Damage((*tit)->atk);
+					/*if ((*tit)-> == 2) {
+						(*eit)->isSlow = true;
+					}*/
 				}
 
 				//Tower Atk Enemy
@@ -550,12 +563,6 @@ void update(int value) {
 					}
 				}*/
 			}
-
-			if ((*eit)->hp <= 0) {
-				EnemyList->remove(*eit);
-				break;
-			}
-
 			if (!isCon) {
 				(*eit)->isTouch = false;
 			}
@@ -563,7 +570,6 @@ void update(int value) {
 
 		for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 			(*tit)->update(30.0 / 1000.0);
-			//(*tit)->DrawBullet();
 			if ((*tit)->hp == 0) {
 				TowerList->remove((*tit));
 				break;
@@ -612,7 +618,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
-	CurScene = 2;
+	CurScene = 0;
 	GameInit();
 
 

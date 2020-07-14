@@ -41,7 +41,5 @@ public:
 	float slowSpeed;
 	float slowTimer, slowTimerRate;
 	bool isSlow;
-	//Enemy list
-	//cal distance tower to enemy to check is atk(2-point distance)
 };
 

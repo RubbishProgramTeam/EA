@@ -1,6 +1,97 @@
 ﻿  Bullet.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(23): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(45): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(39): warning C4101: 'isShot': unreferenced local variable
-  PNGEmpty2017.vcxproj -> C:\Users\User\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(22): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Tower.cpp
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(31): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(32): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(40): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(46): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(54): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(56): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(61): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(62): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(63): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(64): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(68): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(77): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(78): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(79): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(80): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(85): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(86): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(87): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(88): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(92): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(94): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(101): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(102): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(103): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(104): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(109): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(110): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(111): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(112): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(116): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(118): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(136): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(137): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(140): error C2039: 'isCon': is not a member of 'Bullet'
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.h(12): note: see declaration of 'Bullet'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(168): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(175): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(179): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(18): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(28): warning C4005: 'MAX_ENEMY_NUM': macro redefinition
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): note: see previous definition of 'MAX_ENEMY_NUM'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(29): warning C4005: 'MAX_BULLET_NUM': macro redefinition
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.h(15): note: see previous definition of 'MAX_BULLET_NUM'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(110): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(125): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(138): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(139): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(145): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(146): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(151): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(186): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(187): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(188): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(342): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(347): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(352): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(521): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(552): error C2664: 'void std::list<Tower *,std::allocator<_Ty>>::remove(const _Ty &)': cannot convert argument 1 from 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' to 'const _Ty &'
+          with
+          [
+              _Ty=Tower *
+          ]
+          and
+          [
+              _Ty=Bullet *
+          ]
+          and
+          [
+              _Ty=Tower *
+          ]
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(552): note: Reason: cannot convert from 'std::_List_iterator<std::_List_val<std::_List_simple_types<_Ty>>>' to 'const _Ty'
+          with
+          [
+              _Ty=Bullet *
+          ]
+          and
+          [
+              _Ty=Tower *
+          ]
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(552): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(599): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...

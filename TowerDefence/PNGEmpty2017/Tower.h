@@ -47,10 +47,15 @@ public:
 	float perHP;
 	int atk;
 
+	int bullettype;
+
 	//Bullet
 	Bullet b[MAX_BULLET_NUM];
 	list<Bullet*> *BulletList;
 
-	float fire = 2;
-	float fireRate = 2;
+	float bPos_x;
+	float bPos_y;
+
+	float fire;
+	float fireRate;
 };

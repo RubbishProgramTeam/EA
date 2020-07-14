@@ -28,9 +28,6 @@ public:
 
 	int atk;
 
-	bool isCon;
-	bool isActive;
-
 	int getCurTower;
 };
 

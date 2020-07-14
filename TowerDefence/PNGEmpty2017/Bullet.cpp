@@ -2,7 +2,6 @@
 
 Bullet::Bullet()
 {
-	isCon = false;
 }
 
 
@@ -12,7 +11,7 @@ Bullet::~Bullet()
 
 void Bullet::Draw()
 {
-	if (bPos_x <= GAMEBOARD_WIDTH && !isCon) {
+	if (bPos_x <= GAMEBOARD_WIDTH) {
 		glBegin(GL_POLYGON);
 		if (getCurTower == 1) {
 			glColor3f(0, 1, 0);
@@ -36,16 +35,5 @@ void Bullet::Draw()
 
 void Bullet::update(double dt)
 {
-	bool isShot;
-
-	//fireTime -= dt;
 	bPos_x = bPos_x + (bulletSpeed * dt);
-
-	for (int i = 0; i < 360; i++) {
-		glVertex2f((5 * cos(i * M_PI / 180.0f)) + (((bPos_x * GRID_SIZE) + ((bPos_x + 1) * GRID_SIZE)) / 2), (5 * sin(i * M_PI / 180.0f)) + (((bPos_y * GRID_SIZE) + ((bPos_y + 1) * GRID_SIZE + 1)) / 2));
-	}
-	/*if (fireTime <= 0) {
-		isActive = true;
-		fireTime = fireTimeRate;
-	}*/
 }

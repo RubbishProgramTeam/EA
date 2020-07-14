@@ -135,22 +135,19 @@ void Tower::DrawBullet()
 
 	newBullet->bPos_x = x;
 	newBullet->bPos_y = y;
-	newBullet->bulletSpeed = 1;
+	newBullet->bulletSpeed = 2;
 	newBullet->getCurTower = CurTower;
-	//newBullet->fireTimeRate = 2;
-	//newBullet->fireTime = 2;
-	newBullet->isCon = false;
-	newBullet->isActive = false;
 
-	BulletList->push_back(newBullet);
-	
 	if (fire < 0) {
-		for (list<Bullet*>::iterator bit = BulletList->begin(); bit != BulletList->end(); ++bit) {
-			(*bit)->Draw();
-		}
+		BulletList->push_back(newBullet);
 		fire = fireRate;
 	}
-
+	
+	for (list<Bullet*>::iterator bit = BulletList->begin(); bit != BulletList->end(); ++bit) {
+		(*bit)->Draw();
+		bPos_x = (*bit)->bPos_x;
+		bPos_y = (*bit)->bPos_y;
+	}
 }
 
 void Tower::update(double dt)
