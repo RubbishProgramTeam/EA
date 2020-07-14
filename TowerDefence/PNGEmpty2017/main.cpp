@@ -118,6 +118,33 @@ void TitleScene() {
 
 void HowToPlayScene() {
 	//TODO: Show How To Play;
+	glColor3f(0, 0, 0);
+	glRasterPos2f(260, 270);
+	string HowToPlay = "How To Play";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay.c_str());
+	glRasterPos2f(5, 250);
+	string HowToPlay_Content = "At the beginning of the game the player will have a hundred dollars. Players can \nuse money to buy plants and choose where these plants appear in their own \nland (The yellow area is your own land). These plants will assist the player \nagainst the enemy. The enemy will appear to the right of the interface, attacking \nfrom right to left. When the player successfully uses the plant to resist the \nenemy's attack, the player can win.";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay_Content.c_str());
+	glRasterPos2f(230, 44);
+	string BackToTitle = "Back to title scene";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)BackToTitle.c_str());
+
+
+	glColor3f(0, 1, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(225, 70);
+	glVertex2f(387, 70);
+	glVertex2f(387, 30);
+	glVertex2f(225, 30);
+	glEnd();
+
+	glColor3f(1, 0.89, 0.25);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, 0);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, 0);
+	glEnd();
 }
 
 void DrawGameBoard() {
@@ -207,7 +234,13 @@ void mouseClick(int button, int state, int x, int y) {
 			//TODO: Create a button, press to go in the game (CurScene 2)
 		}
 	}*/
-
+	//
+	if (CurScene == 1) {
+		if (x >= 225 && x <= 387 && y >= 230 && y <= 268) {
+			//Back to title scene button
+			CurScene = 0;
+		}
+	}
 	//Game Scene
 	if (CurScene == 2) {
 		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
@@ -491,6 +524,7 @@ void display() {
 	// Show How to play scene
 	if (CurScene == 1) {
 		//TODO: How to play Scene func;
+		HowToPlayScene();
 	}
 
 	//ShowGameScene
