@@ -13,6 +13,22 @@ void Enemy::DrawEnemy()
 {
 	if (!isActive) return;
 
+	glColor3f(0, 1, 0);
+	glBegin(GL_POLYGON);
+	glVertex2f(x * GRID_SIZE, y * GRID_SIZE);
+	glVertex2f(x * GRID_SIZE, y * GRID_SIZE + 5);
+	glVertex2f(hpBar, y * GRID_SIZE + 5);
+	glVertex2f(hpBar, y * GRID_SIZE);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(1, 0, 0);
+	glVertex2f(x * GRID_SIZE, y * GRID_SIZE);
+	glVertex2f(x * GRID_SIZE, y * GRID_SIZE + 5);
+	glVertex2f((x + 1) * GRID_SIZE, y * GRID_SIZE + 5);
+	glVertex2f((x + 1) * GRID_SIZE, y * GRID_SIZE);
+	glEnd();
+
 	glBegin(GL_POLYGON);
 	glColor3f(1, 0, 0);
 	for (int i = 0; i < 360; i++) {
@@ -35,6 +51,10 @@ void Enemy::update(double dt)
 	}
 
 	if (!isDead) {
+		perHP = hp / maxHP;
+
+		hpBar = (x * GRID_SIZE) + (GRID_SIZE * perHP);
+
 		if (x > -1 && !isTouch && !isSlow)
 			x = x - (walkSpeed * dt);
 

@@ -8,6 +8,7 @@ using namespace std;
 //User define
 #include "Tower.h"
 #include "Enemy.h"
+#include "Bullet.h"
 
 #include <chrono>
 #include <ctime>
@@ -25,6 +26,7 @@ using namespace std;
 #define MAX_TOWER_NUM 114
 #define MIN_MONEY 0
 #define MAX_ENEMY_NUM 100
+#define MAX_BULLET_NUM 999
 #define SPACEBAR 32
 
 //User public
@@ -45,10 +47,11 @@ int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 int money;
 int towerMoney = 0;
 bool isBuild;
+bool isFirst = true;
 
 int CurScene;
 
-int enemyWalkSpeed;
+float gameStart = 3;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -59,6 +62,9 @@ list<Tower*> *TowerList;
 
 Enemy e[MAX_ENEMY_NUM];
 list<Enemy*> *EnemyList;
+
+Bullet b[MAX_BULLET_NUM];
+list<Bullet*> *BulletList;
 
 void TitleScene() {
 	// Title
@@ -183,9 +189,15 @@ void mouseClick(int button, int state, int x, int y) {
 				}
 
 				Tower *newTower = new Tower();
+				Bullet *newBullet = new Bullet();
+
 				if (money >= towerMoney && CurTower != 0) {
 					newTower->x = mouse_x;
 					newTower->y = mouse_y;
+
+					/*newTower->bPos_x = newTower->x;
+					newTower->bPos_y = newTower->y;
+					newTower->bulletSpeed = 2;*/
 
 					newTower->perHP = newTower->hp / newTower->MaxHP;
 
@@ -219,7 +231,11 @@ void mouseClick(int button, int state, int x, int y) {
 					//cout << TowerList->size() << endl;
 
 					GameBoard[mouse_x][mouse_y] = 1;
+					if (newBullet->fireTime < 0) {
+						newBullet->bPos_x = newTower->x;
+						newBullet->bPos_y = newTower->y;
 
+					}
 				}
 				else if (money <= towerMoney) {
 					MessageBox(NULL, "You don't gave enough money!", "Ops!", MB_OK | MB_ICONEXCLAMATION);
@@ -380,7 +396,11 @@ void SpawnEnemy(int value) {
 	newEnemy->slowTimerRate = 5;
 	newEnemy->slowSpeed = 0.8;
 
-	newEnemy->hp = 1;
+	newEnemy->hp = rand() % 5 + 2;
+	newEnemy->maxHP = newEnemy->hp;
+
+	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
+
 	newEnemy->atk = 1;
 
 	newEnemy->x = GAMEBOARD_WIDTH;
@@ -389,11 +409,14 @@ void SpawnEnemy(int value) {
 	newEnemy->saveSpeed = newEnemy->walkSpeed;
 	newEnemy->isActive = true;
 
-	cout << newEnemy->walkSpeed << endl;
-
 	EnemyList->push_back(newEnemy);
 
 	glutTimerFunc(7000, SpawnEnemy, 0);
+}
+void SpawnBullet(int value) {
+	Bullet *newBulelt = new Bullet();
+
+
 }
 
 void GameInit() {
@@ -471,17 +494,16 @@ void display() {
 
 	//ShowGameScene
 	if (CurScene == 2) {
-
 			Draw_UI();
 
 			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
 				(*it)->DrawBaseTower();
+				//(*it)->DrawBullet();
 			}
 
 			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
 				(*it)->DrawEnemy();
 			}
-
 
 			DrawGameBoard();
 	}
@@ -491,6 +513,8 @@ void display() {
 
 void update(int value) {
 	if (CurScene == 2) {
+		gameStart -= (30.0 / 1000.0);
+
 		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
 			(*it)->update(30.0/1000.0);
 
@@ -499,13 +523,12 @@ void update(int value) {
 				CurScene = 3;
 			}
 		}
-
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
 			bool isCon = false;
 
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 				float d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-				float d2 = sqrtf((((*eit)->x - (*eit)->x) * ((*eit)->x - (*eit)->x)) + (((*eit)->y - (*eit)->y) * ((*eit)->y - (*eit)->y)));
+				float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
 				
 				if (d <= 1 && (*eit)->y == (*tit)->y) {
 					(*eit)->isTouch = true;
@@ -521,6 +544,7 @@ void update(int value) {
 
 		for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 			(*tit)->update(30.0 / 1000.0);
+			(*tit)->DrawBullet();
 			if ((*tit)->hp == 0) {
 				TowerList->remove((*tit));
 				break;
@@ -547,7 +571,6 @@ void FixWindowSize() {
 
 int main(int argc, char **argv) {
 	srand(time(0));
-
 	cout << "Programmer: <Tower Defence>\n";
 	cout << "Compiled on " << __DATE__ << ", " << __TIME__ << std::endl << std::endl;
 
@@ -561,16 +584,26 @@ int main(int argc, char **argv) {
 	initRendering();                            // initialize rendering
 
 	// register handler functions
+
 	glutReshapeFunc(cameraSetup);               // resiz window and camera setup
-	glutDisplayFunc(display);                   // Display function
 	glutTimerFunc(30, update, 0);
+	glutDisplayFunc(display);                   // Display function
+
 	glutMouseFunc(mouseClick);
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
 	CurScene = 2;
 	GameInit();
-	SpawnEnemy(0);
+
+	/*if (isFirst) {
+		glutTimerFunc(3000, SpawnEnemy, 0);
+		isFirst = false;
+	}
+	else {
+		SpawnEnemy(0);
+	}*/
+
 	// Disable Window Resizing
 	FixWindowSize();
 

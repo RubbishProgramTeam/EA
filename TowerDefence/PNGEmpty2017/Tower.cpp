@@ -127,11 +127,32 @@ void Tower::Damage(int d)
 	}
 }
 
+void Tower::DrawBullet()
+{
+	if (x <= GAMEBOARD_WIDTH && bPos_x <= GAMEBOARD_WIDTH) {
+		glBegin(GL_POLYGON);
+		if (CurTower == 1) {
+			glColor3f(0, 1, 0);
+			bulletType = 1;
+		}
+		else if (CurTower == 2) {
+			glColor3f(0.43, 1, 0.91);
+			bulletType = 2;
+		}
+
+		for (int i = 0; i < 360; i++) {
+			glVertex2f((5 * cos(i * M_PI / 180.0f)) + (((bPos_x * GRID_SIZE) + ((bPos_x + 1) * GRID_SIZE)) / 2), (5 * sin(i * M_PI / 180.0f)) + (((bPos_y * GRID_SIZE) + ((bPos_y + 1) * GRID_SIZE + 1)) / 2));
+		}
+		glEnd();
+	}
+}
+
 void Tower::update(double dt)
 {
 	if (!isActive) {
 		return;
 	}
+	//Check is dead
 	if (hp <= 0) {
 		isActive = false;
 	}
@@ -140,9 +161,14 @@ void Tower::update(double dt)
 
 	hpBar = (x * GRID_SIZE) + (GRID_SIZE * perHP);
 
+	bPos_x = bPos_x + (bulletSpeed * dt);
+
+	//Get Damage
 	if (damageTime > 0) {
 		damageTime -= dt;
 	}
 
-	//TODO: SHOT BULLET
+	if (fireTime > 0) {
+		fireTime -= dt;
+	}
 }

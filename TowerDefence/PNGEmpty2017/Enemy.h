@@ -21,7 +21,10 @@ public:
 public:
 	float x, y;
 
-	int hp, atk;
+	float hp, maxHP, perHP;
+	int hpBar;
+
+	int atk;
 
 	float walkSpeed;
 	int saveSpeed;
