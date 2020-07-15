@@ -15,8 +15,10 @@ using namespace std;
 #include <ctime>
 
 #include <list>
-#include <stdlib.h>;
-#include <time.h>;
+#include <stdlib.h>
+#include <time.h>
+
+#include <playsoundapi.h>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -186,6 +188,24 @@ void DrawGameBoard() {
 	glEnd();
 }
 
+void GameOverScene() {
+	glColor3f(0.73, 0.45, 0.33);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glRasterPos2f(100, 100);
+	string gameover = "Game Over !! Your lose!!";
+	string scene = "scence";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)gameover.c_str());
+
+}
+
+
 double fRand(float fMin, float fMax)
 {
 	float f = (float)rand() / RAND_MAX;
@@ -229,15 +249,10 @@ void mouseClick(int button, int state, int x, int y) {
 		return;
 	}
 
-	/*if (CurScene == 0) {
-		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-			//TODO: Create a button, press to go in how to play scene(CurScene 1)
-			CurScene = 2;
+	if (CurScene == 0) {
 
-			//TODO: Create a button, press to go in the game (CurScene 2)
-		}
-	}*/
-	//
+	}
+	//HowToPlayScene
 	if (CurScene == 1) {
 		if (x >= 225 && x <= 387 && y >= 230 && y <= 268) {
 			//Back to title scene button
@@ -573,6 +588,8 @@ void GameInit() {
 
 	Sprite ClearID("Image/Del.png");
 	ClearImage = ClearID.GenTexture();
+	// BGM Player (audio must be .wav format)
+	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 
@@ -652,6 +669,18 @@ void AutoAddMoney(double dt) {
 void update(int value) {
 	if (CurScene == 3) {
 		//Draw Game Over Scene;
+		DrawGameBoard();
+	}
+	if (CurScene == 3) {
+		GameOverScene();
+	}
+	glutSwapBuffers();
+}
+
+void update(int value) {
+	//gameoverscence
+	if (CurScene == 3) {
+		GameOverScene();
 	}
 	if (CurScene == 2) {
 		gameStart -= (30.0 / 1000.0);
@@ -776,7 +805,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
-	CurScene = 0;
+	CurScene = 3;
 	GameInit();
 
 
