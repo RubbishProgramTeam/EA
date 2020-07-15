@@ -27,6 +27,7 @@ public:
 	void Damage(int d);
 
 	void DrawBullet();
+	void DestroyBullet();
 
 	void update(double dt);
 public:
@@ -47,7 +48,9 @@ public:
 	float perHP;
 	int atk;
 
-	int bullettype;
+	float addMoney, addMoneyRate;
+
+	float d, d2;
 
 	//Bullet
 	Bullet b[MAX_BULLET_NUM];

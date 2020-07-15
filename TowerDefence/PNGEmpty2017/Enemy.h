@@ -30,13 +30,13 @@ public:
 	int hpBar;
 
 	int atk;
-
 	float walkSpeed;
-	int saveSpeed;
+
 	bool isActive;
 	bool isDead;
-
 	bool isTouch;
+
+	float damageTimer, damageTimerRate;
 
 	float slowSpeed;
 	float slowTimer, slowTimerRate;

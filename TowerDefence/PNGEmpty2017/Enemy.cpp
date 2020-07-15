@@ -40,7 +40,10 @@ void Enemy::DrawEnemy()
 
 void Enemy::Damage(int d)
 {
-	hp -= d;
+	if (damageTimer <= 0) {
+		hp -= d;
+		damageTimer = damageTimerRate;
+	}
 }
 
 void Enemy::update(double dt)
@@ -51,8 +54,8 @@ void Enemy::update(double dt)
 		slowTimer = slowTimerRate;
 	}
 
-	if (hp <= 0) {
-		isDead = true;
+	if (damageTimer > 0) {
+		damageTimer -= dt;
 	}
 
 	if (!isDead) {

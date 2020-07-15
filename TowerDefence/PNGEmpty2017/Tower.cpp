@@ -119,6 +119,30 @@ void Tower::DrawBaseTower()
 		}		
 		glEnd();
 	}
+	else if (CurTower == 5) {
+		glColor3f(0, 1, 0);
+		glBegin(GL_POLYGON);
+		glVertex2f(x * GRID_SIZE, y * GRID_SIZE);
+		glVertex2f(x * GRID_SIZE, y * GRID_SIZE + 5);
+		glVertex2f(hpBar, y * GRID_SIZE + 5);
+		glVertex2f(hpBar, y * GRID_SIZE);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glColor3f(1, 0, 0);
+		glVertex2f(x * GRID_SIZE, y * GRID_SIZE);
+		glVertex2f(x * GRID_SIZE, y * GRID_SIZE + 5);
+		glVertex2f((x + 1) * GRID_SIZE, y * GRID_SIZE + 5);
+		glVertex2f((x + 1) * GRID_SIZE, y * GRID_SIZE);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glColor3f(0.83, 0.24, 0.24);
+		for (int i = 0; i < 360; i += 120) {
+			glVertex2f((radius * cos(i * M_PI / 180.0f)) + (((x * GRID_SIZE) + ((x + 1) * GRID_SIZE)) / 2), (radius * sin(i * M_PI / 180.0f)) + (((y * GRID_SIZE) + ((y + 1) * GRID_SIZE + 1)) / 2));
+		}
+		glEnd();
+	}
 }
 
 void Tower::Damage(int d)
@@ -135,14 +159,14 @@ void Tower::DrawBullet()
 
 	newBullet->bPos_x = x;
 	newBullet->bPos_y = y;
-	newBullet->bulletSpeed = 2;
+	newBullet->bulletSpeed = 3;
 	newBullet->getCurTower = CurTower;
 
 	if (fire < 0) {
 		BulletList->push_back(newBullet);
 		fire = fireRate;
 	}
-	
+
 	for (list<Bullet*>::iterator bit = BulletList->begin(); bit != BulletList->end(); ++bit) {
 		(*bit)->Draw();
 		bPos_x = (*bit)->bPos_x;
@@ -150,9 +174,16 @@ void Tower::DrawBullet()
 	}
 }
 
+void Tower::DestroyBullet()
+{
+	for (list<Bullet*>::iterator it = BulletList->begin(); it != BulletList->end(); ++it) {
+		BulletList->remove((*it));
+		break;
+	}
+}
+
 void Tower::update(double dt)
 {
-
 
 	if (!isActive) {
 		return;
@@ -169,11 +200,18 @@ void Tower::update(double dt)
 	for (list<Bullet*>::iterator it = BulletList->begin(); it != BulletList->end(); ++it) {
 		(*it)->update(30.0 / 1000.0);
 	}
+
+	//is addMoney
+	if (addMoney > 0) {
+		addMoney -= dt;
+	}
+
 	//Get Damage
 	if (damageTime > 0) {
 		damageTime -= dt;
 	}
 
+	//Draw Bullet
 	if (fire > 0) {
 		fire -= dt;
 	}

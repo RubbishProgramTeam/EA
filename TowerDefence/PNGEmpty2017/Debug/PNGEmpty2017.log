@@ -1,24 +1,23 @@
 ﻿  main.cpp
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(17): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(18): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(28): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
-  c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\enemy.h(12): note: 請參閱 'MAX_ENEMY_NUM' 之前的定義
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(29): warning C4005: 'MAX_BULLET_NUM': 巨集重複定義
-  c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\tower.h(15): note: 請參閱 'MAX_BULLET_NUM' 之前的定義
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(110): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(141): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(152): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(165): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(166): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(172): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(173): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(178): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(213): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(214): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(215): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(375): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(380): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(385): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(555): warning C4305: '-=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(632): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-  PNGEmpty2017.vcxproj -> C:\Users\user\Downloads\EA-master (1)\EA-master\TowerDefence\Debug\PNGEmpty2017.exe
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(18): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(19): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(29): warning C4005: 'MAX_ENEMY_NUM': macro redefinition
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): note: see previous definition of 'MAX_ENEMY_NUM'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(30): warning C4005: 'MAX_BULLET_NUM': macro redefinition
+  c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.h(15): note: see previous definition of 'MAX_BULLET_NUM'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(112): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(143): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(154): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(167): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(168): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(174): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(175): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(180): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(206): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(217): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(218): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(218): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(644): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(657): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(756): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PNGEmpty2017.vcxproj -> C:\Users\User\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe

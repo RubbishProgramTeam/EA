@@ -9,6 +9,7 @@ using namespace std;
 #include "Tower.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include <playsoundapi.h>
 
 #include <chrono>
 #include <ctime>
@@ -35,6 +36,8 @@ GLuint BaseTowerImage;
 GLuint SlowTowerImage;
 GLuint BlockImage;
 GLuint TrapImage;
+GLuint FlowerImage;
+GLuint ClearImage;
 
 int mouse_x;
 int mouse_y;
@@ -45,9 +48,12 @@ bool isGameOver;
 int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 
 int money;
+float autoAddMoney, AddMoneyRate;
+
 int towerMoney = 0;
 bool isBuild;
 bool isFirst = true;
+bool isClear;
 
 int CurScene;
 
@@ -62,10 +68,6 @@ list<Tower*> *TowerList;
 
 Enemy e[MAX_ENEMY_NUM];
 list<Enemy*> *EnemyList;
-
-/*float bPos_x, bPos_y;
-float bulletSpeed;
-int bulletType;*/
 
 void TitleScene() {
 	// Title
@@ -201,23 +203,24 @@ void SpawnEnemy(int value) {
 	newEnemy->slowTimerRate = 5;
 	newEnemy->slowSpeed = 0.5;
 
-	//newEnemy->hp = rand() % 5 + 2;
-	newEnemy->hp = 5;
+	newEnemy->hp = rand() % 15 + 10;
 	newEnemy->maxHP = newEnemy->hp;
 
 	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
 
 	newEnemy->atk = 1;
 
+	newEnemy->damageTimer = 1;
+	newEnemy->damageTimerRate = 1;
+
 	newEnemy->x = GAMEBOARD_WIDTH;
 	newEnemy->y = rand() % GAMEBOARD_HEIGTH;
-	newEnemy->walkSpeed = fRand(1.5, 2.5);
-	newEnemy->saveSpeed = newEnemy->walkSpeed;
+	newEnemy->walkSpeed = fRand(0.8, 1);
 	newEnemy->isActive = true;
 
 	EnemyList->push_back(newEnemy);
 
-	glutTimerFunc(7000, SpawnEnemy, 0);
+	glutTimerFunc(10000, SpawnEnemy, 0);
 }
 
 void mouseClick(int button, int state, int x, int y) {
@@ -253,7 +256,7 @@ void mouseClick(int button, int state, int x, int y) {
 			//cout << "Mouse Click: " << mouse_x << ", " << mouse_y << endl;   //debug
 
 			if (mouse_x < GAMEBOARD_WIDTH - 3 && mouse_y < GAMEBOARD_HEIGTH) {
-				if (GameBoard[mouse_x][mouse_y] != 0) {
+				if (!isClear && GameBoard[mouse_x][mouse_y] != 0) {
 					MessageBox(NULL, "Please choose other grid!", "Ops!", MB_OK | MB_ICONERROR);
 					return;
 				}
@@ -270,24 +273,37 @@ void mouseClick(int button, int state, int x, int y) {
 					if (CurTower == 1) {
 						newTower->hp = 5.0;
 						newTower->atk = 2;
-						newTower->fire = 2;
-						newTower->fireRate = 2;
+						newTower->fire = 1;
+						newTower->fireRate = 5;
+						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 2) {
-						newTower->hp = 7.0;
+						newTower->hp = 5.0;
 						newTower->atk = 1;
 						newTower->fire = 3;
 						newTower->fireRate = 3;
+						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 3) {
 						newTower->hp = 1.0;
+						newTower->atk = 10;
+						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 4) {
-						newTower->hp = 10.0;
+						newTower->hp = 15.0;
+						newTower->atk = 0;
+						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
+					}
+					else if (CurTower == 5) {
+						newTower->hp = 5.0;
+						newTower->atk = 0;
+						newTower->MaxHP = newTower->hp;
+						newTower->addMoney = 8;
+						newTower->addMoneyRate = newTower->addMoney;
 					}
 
 					newTower->damageTimeRate = 2;
@@ -300,36 +316,55 @@ void mouseClick(int button, int state, int x, int y) {
 					TowerList->push_back(newTower);
 
 					GameBoard[mouse_x][mouse_y] = 1;
+
+					if (isClear && GameBoard[mouse_x][mouse_y] != 0) {
+						GameBoard[mouse_x][mouse_y] = 0;
+						isClear = false;
+						CurTower = 0;
+						return;
+					}
 				}
 				else if (money <= towerMoney) {
 					MessageBox(NULL, "You don't gave enough money!", "Ops!", MB_OK | MB_ICONEXCLAMATION);
 					return;
 				}
-				//cout << newTower->x << " " << newTower->y << endl; //debug
 			}
 		}
+
+
 		if (mouse_x < GAMEBOARD_WIDTH && mouse_y <= (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH) && mouse_y > GAMEBOARD_HEIGTH) {
 			//store area
 
 			if (mouse_x >= 4 && mouse_x <= 6 && mouse_y >= 6 && mouse_y <= 9) {
 				//Base Tower
 				CurTower = 1;
-				towerMoney = 20;
+				towerMoney = 100;
 			}
-			if (mouse_x >= 8 && mouse_x <= 10 && mouse_y >= 6 && mouse_y <= 9) {
+			if (mouse_x >= 7 && mouse_x <= 9 && mouse_y >= 6 && mouse_y <= 9) {
 				//SlowTower
 				CurTower = 2;
-				towerMoney = 30;
+				towerMoney = 175;
 			}
-			if (mouse_x >= 12 && mouse_x <= 14 && mouse_y >= 6 && mouse_y <= 9) {
+			if (mouse_x >= 10 && mouse_x <= 12 && mouse_y >= 6 && mouse_y <= 9) {
 				//Block
 				CurTower = 4;
-				towerMoney = 10;
+				towerMoney = 50;
 			}
-			if (mouse_x >= 16 && mouse_x <= 18 && mouse_y >= 6 && mouse_y <= 9) {
+			if (mouse_x >= 13 && mouse_x <= 15 && mouse_y >= 6 && mouse_y <= 9) {
 				//Trap
 				CurTower = 3;
-				towerMoney = 30;
+				towerMoney = 75;
+			}			
+			if (mouse_x >= 16 && mouse_x <= 18 && mouse_y >= 6 && mouse_y <= 9) {
+				//SunFlower
+				CurTower = 5;
+				towerMoney = 25;
+			}			
+			if (mouse_x >= 19 && mouse_x <= 21 && mouse_y >= 6 && mouse_y <= 9) {
+				//DelPlant
+				CurTower = 6;
+				towerMoney = 0;
+				isClear = true;
 			}
 		}
 	}
@@ -340,7 +375,7 @@ void keyboardClick(unsigned char key, int x, int y) {
 		if (key == SPACEBAR) {
 			CurScene = 2;
 			if (isFirst) {
-				glutTimerFunc(3000, SpawnEnemy, 0);
+				glutTimerFunc(10000, SpawnEnemy, 0);
 				isFirst = false;
 			}
 			else {
@@ -354,7 +389,7 @@ void keyboardClick(unsigned char key, int x, int y) {
 }
 
 void Draw_UI() {
-	string towerName[5] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select"};
+	string towerName[7] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select", "Money Tower", "Clear Plant"};
 
 	glColor3f(1, 1, 0);
 	glRasterPos2f(5, 270);
@@ -362,33 +397,60 @@ void Draw_UI() {
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
 
 	glColor3f(0, 0, 0);
-	glRasterPos2f(5, 220);
-	string selectTower = "SelectTower: ";
+	glRasterPos2f(5, 240);
+	string selectTower = "Selection: ";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower.c_str());
 
-	glRasterPos2f(5, 200);
+	glRasterPos2f(5, 220);
 	if (CurTower == 1) {
 		string selectTower_UI = towerName[0];
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
 	}	
 	if (CurTower == 2) {
-		glColor3f(0.43, 1, 0.91);
 		string selectTower_UI = towerName[1];
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
 	}	
 	if (CurTower == 3) {
-		glColor3f(0.77, 0.32, 1);
 		string selectTower_UI = towerName[3];
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
 	}	
 	if (CurTower == 4) {
-		glColor3f(1, 0.55, 0.6);
 		string selectTower_UI = towerName[2];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}	
+	if (CurTower == 5) {
+		string selectTower_UI = towerName[5];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}	
+	if (CurTower == 6) {
+		string selectTower_UI = towerName[6];
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
 	}
 	if(CurTower == 0){
 		string selectTower_UI = towerName[4];
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+
+	glRasterPos2f(5, 200);
+	if (CurTower == 1) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 2) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 3) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 4) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 5) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
 	}
 
 
@@ -439,23 +501,39 @@ void Draw_UI() {
 
 	//Add Money Tower
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, TrapImage);
+	glBindTexture(GL_TEXTURE_2D, FlowerImage);
 	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(390, 180);
-	glTexCoord2f(1, 0); glVertex2f(480, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(480, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(390, 360);
+	glTexCoord2f(0, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 0); glVertex2f(570, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(570, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(480, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ClearImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(570, 180);
+	glTexCoord2f(1, 0); glVertex2f(670, 180);
+	glTexCoord2f(1, 1); glVertex2f(670, 265);
+	glTexCoord2f(0, 1); glVertex2f(570, 265);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 }
 
 void GameInit() {
 
+	isClear = false;
+
 	isGameOver = false;
 
 	CurTower = 0;
 
-	money = 100;
+	money = 50;
+
+	autoAddMoney = 10.0;
+	AddMoneyRate = 10.0;
+	autoAddMoney = AddMoneyRate;
 
 	TowerList = new list<Tower*>();
 
@@ -489,6 +567,12 @@ void GameInit() {
 
 	Sprite BlockID("Image/Block.png");
 	BlockImage = BlockID.GenTexture();
+
+	Sprite FlowerID("Image/sunflower.png");
+	FlowerImage = FlowerID.GenTexture();
+
+	Sprite ClearID("Image/Del.png");
+	ClearImage = ClearID.GenTexture();
 }
 
 
@@ -529,33 +613,60 @@ void display() {
 
 	//ShowGameScene
 	if (CurScene == 2) {
-			Draw_UI();
+		Draw_UI();
 
-			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
-				(*it)->DrawBullet();
-			}
+		for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+			(*it)->DrawBullet();
+		}
 
-			for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+		for (list<Tower*>::iterator it = TowerList->begin(); it != TowerList->end(); ++it) {
+			if (GameBoard[(*it)->x][(*it)->y] != 0) {
 				(*it)->DrawBaseTower();
 			}
-
-			for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
-				(*it)->DrawEnemy();
+			else {
+				(*it)->isActive = false;
 			}
+		}
 
-			DrawGameBoard();
+		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
+			(*it)->DrawEnemy();
+		}
+
+		DrawGameBoard();
 	}
-
+	if (CurScene == 3) {
+		TitleScene();
+	}
 	glutSwapBuffers();
 }
-
+void AutoAddMoney(double dt) {
+	if (autoAddMoney > 0) {
+		autoAddMoney -= dt;
+	}
+	else if (autoAddMoney <= 0) {
+		money += 25;
+		autoAddMoney = AddMoneyRate;
+	}
+}
 
 void update(int value) {
+	if (CurScene == 3) {
+		//Draw Game Over Scene;
+	}
 	if (CurScene == 2) {
 		gameStart -= (30.0 / 1000.0);
+		AutoAddMoney(30.0 / 1000.0);
+		bool isCon = false;
 
 		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
 			(*it)->update(30.0/1000.0);
+
+			if ((*it)->hp <= 0) {
+				(*it)->isDead = true;
+				isCon = false;
+				EnemyList->remove(*it);
+				break;
+			}
 
 			if ((*it)->x <= -1) {
 				//GameOver
@@ -564,38 +675,38 @@ void update(int value) {
 		}
 
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
-			bool isCon = false;
-
+			
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
-				//Tower and Enemy distance;
-				float d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-
-				cout << d << endl;
-
-				float d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
+				//Tower distance
+				//(*tit)->d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
 				
-				//Enemy atk Tower
-				if (d <= 1 && (*eit)->y == (*tit)->y) {
-					(*eit)->isTouch = true;
-					isCon = true;
-					(*tit)->Damage((*eit)->atk);
-				}
+				float d	= sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
+				//Bullet distance
+				(*tit)->d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
 
-				if (d2 <= 1 && (*eit)->y == (*tit)->y) {
-					(*eit)->Damage((*tit)->atk);
-					/*if ((*tit)-> == 2) {
-						(*eit)->isSlow = true;
-					}*/
-				}
-
-				//Tower Atk Enemy
-				/*if (d2 <= 1 && (*eit)->y == (*tit)->bPos_y) {
-					(*eit)->Damage((*tit)->atk);					
-					(*tit)->bPos_x = (*tit)->x;
-					if ((*tit)->bulletType == 2) {
-						(*eit)->isSlow = true;
+				if ((*tit)->y == (*eit)->y && (*eit)->x > (*tit)->x) {
+					if (d > 1) {
+						isCon = false;
 					}
-				}*/
+
+					if ((*tit)->d2 <= 1) {
+
+						(*eit)->Damage((*tit)->atk);
+						if ((*tit)->CurTower == 2) {
+							(*eit)->isSlow = true;
+						}
+						(*tit)->DestroyBullet();
+					}
+
+					if (d <= 1) {
+						if ((*tit)->CurTower == 3) {
+							(*eit)->isDead = true;
+						}
+						(*eit)->isTouch = true;
+						(*tit)->Damage((*eit)->atk);
+						isCon = true;
+					}
+				}
 			}
 			if (!isCon) {
 				(*eit)->isTouch = false;
@@ -604,7 +715,20 @@ void update(int value) {
 
 		for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 			(*tit)->update(30.0 / 1000.0);
+
+			if ((*tit)->addMoney != NULL) {
+				if ((*tit)->addMoney <= 0) {
+					money += 25;
+					(*tit)->addMoney = (*tit)->addMoneyRate;
+				}
+			}
+
+			if ((*tit)->x > GAMEBOARD_WIDTH) {
+				(*tit)->DestroyBullet();
+			}
+
 			if ((*tit)->hp == 0) {
+				GameBoard[(*tit)->x][(*tit)->y] = 0;
 				TowerList->remove((*tit));
 				break;
 			}
