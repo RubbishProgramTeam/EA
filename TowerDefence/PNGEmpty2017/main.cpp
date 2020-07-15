@@ -492,6 +492,7 @@ void GameInit() {
 	Sprite BlockID("Image/Block.png");
 	BlockImage = BlockID.GenTexture();
 
+	// BGM Player (audio must be .wav format)
 	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
