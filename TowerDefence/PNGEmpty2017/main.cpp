@@ -81,7 +81,7 @@ void GameInit() {
 
 	CurTower = 0;
 
-	money = 100;
+	money = 50;
 
 	autoAddMoney = 10.0;
 	AddMoneyRate = 10.0;
@@ -125,8 +125,7 @@ void GameInit() {
 
 	Sprite ClearID("Image/Del.png");
 	ClearImage = ClearID.GenTexture();
-	// BGM Player (audio must be .wav format)
-	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+
 }
 
 void TitleScene() {
@@ -721,10 +720,6 @@ void update(int value) {
 					//Bullet distance
 					(*tit)->d2 = (*eit)->x - (*tit)->bPos_x;
 
-					cout << "d:" << (*tit)->d << endl;
-					cout << "d2:" << (*tit)->d2 << endl;
-
-
 					if ((*tit)->d2 <= 1) {
 						(*eit)->Damage((*tit)->atk);
 						if ((*tit)->CurTower == 2) {
@@ -812,7 +807,8 @@ int main(int argc, char **argv) {
 
 	//Title Scene
 	CurScene = 0;
-
+	// BGM Player (audio must be .wav format)
+	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 
 	// Disable Window Resizing
 	FixWindowSize();

@@ -3,19 +3,19 @@ c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(31): warning C4005: 'MA
   c:\users\user\desktop\towerdefence\pngempty2017\enemy.h(12): note: 請參閱 'MAX_ENEMY_NUM' 之前的定義
 c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(32): warning C4005: 'MAX_BULLET_NUM': 巨集重複定義
   c:\users\user\desktop\towerdefence\pngempty2017\tower.h(16): note: 請參閱 'MAX_BULLET_NUM' 之前的定義
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(172): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(203): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(214): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(171): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(202): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(213): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(226): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
 c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(227): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(228): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(233): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
 c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(234): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(235): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(240): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(284): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(295): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(296): warning C4305: '引數': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(296): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(663): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(681): warning C4305: '+=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(791): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(239): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(283): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(294): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(295): warning C4305: '引數': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(295): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(662): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(680): warning C4305: '+=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(790): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
   PNGEmpty2017.vcxproj -> C:\Users\user\Desktop\TowerDefence\Debug\PNGEmpty2017.exe
