@@ -186,6 +186,24 @@ void DrawGameBoard() {
 	glEnd();
 }
 
+void GameOverScene() {
+	glColor3f(0.73, 0.45, 0.33);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glRasterPos2f(100, 100);
+	string gameover = "Game Over !! Your lose!!";
+	string scene = "scence";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)gameover.c_str());
+
+}
+
+
 double fRand(float fMin, float fMax)
 {
 	float f = (float)rand() / RAND_MAX;
@@ -550,12 +568,19 @@ void display() {
 
 			DrawGameBoard();
 	}
-
+	if (CurScene == 3) {
+		GameOverScene();
+	}
 	glutSwapBuffers();
 }
 
-
 void update(int value) {
+	//gameoverscence
+	if (CurScene == 3) {
+		GameOverScene();
+		/*string BackToTitle = "Restart";
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)BackToTitle.c_str());*/
+	}
 	if (CurScene == 2) {
 		gameStart -= (30.0 / 1000.0);
 
@@ -657,7 +682,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
-	CurScene = 0;
+	CurScene = 3;
 	GameInit();
 
 
