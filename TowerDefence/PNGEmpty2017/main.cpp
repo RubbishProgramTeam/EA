@@ -492,7 +492,7 @@ void GameInit() {
 	Sprite BlockID("Image/Block.png");
 	BlockImage = BlockID.GenTexture();
 
-	PlaySound("media/test.mp3", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 
