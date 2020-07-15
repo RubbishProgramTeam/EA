@@ -189,7 +189,7 @@ void DrawGameBoard() {
 }
 
 void GameOverScene() {
-	glColor3f(0.73, 0.45, 0.33);
+	glColor3f(1, 1, 1);
 	glBegin(GL_POLYGON);
 	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
 	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
@@ -652,7 +652,7 @@ void display() {
 		DrawGameBoard();
 	}
 	if (CurScene == 3) {
-		TitleScene();
+		GameOverScene();
 	}
 	glutSwapBuffers();
 }
@@ -664,17 +664,6 @@ void AutoAddMoney(double dt) {
 		money += 25;
 		autoAddMoney = AddMoneyRate;
 	}
-}
-
-void update(int value) {
-	if (CurScene == 3) {
-		//Draw Game Over Scene;
-		DrawGameBoard();
-	}
-	if (CurScene == 3) {
-		GameOverScene();
-	}
-	glutSwapBuffers();
 }
 
 void update(int value) {
@@ -805,7 +794,7 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(keyboardClick);
 
 	//Title Scene
-	CurScene = 3;
+	CurScene = 0;
 	GameInit();
 
 
