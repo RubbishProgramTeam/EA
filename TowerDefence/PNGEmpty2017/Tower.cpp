@@ -155,22 +155,23 @@ void Tower::Damage(int d)
 
 void Tower::DrawBullet()
 {
-	Bullet *newBullet = new Bullet();
+	if (isActive) {
+		Bullet *newBullet = new Bullet();
 
-	newBullet->bPos_x = x;
-	newBullet->bPos_y = y;
-	newBullet->bulletSpeed = 3;
-	newBullet->getCurTower = CurTower;
+		newBullet->bPos_x = x;
+		newBullet->bPos_y = y;
+		newBullet->bulletSpeed = 3;
+		newBullet->getCurTower = CurTower;
 
-	if (fire < 0) {
-		BulletList->push_back(newBullet);
-		fire = fireRate;
-	}
-
-	for (list<Bullet*>::iterator bit = BulletList->begin(); bit != BulletList->end(); ++bit) {
-		(*bit)->Draw();
-		bPos_x = (*bit)->bPos_x;
-		bPos_y = (*bit)->bPos_y;
+		if (fire < 0) {
+			BulletList->push_back(newBullet);
+			fire = fireRate;
+		}
+		for (list<Bullet*>::iterator bit = BulletList->begin(); bit != BulletList->end(); ++bit) {
+			(*bit)->Draw();
+			bPos_x = (*bit)->bPos_x;
+			bPos_y = (*bit)->bPos_y;
+		}
 	}
 }
 
@@ -197,8 +198,10 @@ void Tower::update(double dt)
 
 	hpBar = (x * GRID_SIZE) + (GRID_SIZE * perHP);
 
-	for (list<Bullet*>::iterator it = BulletList->begin(); it != BulletList->end(); ++it) {
-		(*it)->update(30.0 / 1000.0);
+	if (isActive) {
+		for (list<Bullet*>::iterator it = BulletList->begin(); it != BulletList->end(); ++it) {
+			(*it)->update(30.0 / 1000.0);
+		}
 	}
 
 	//is addMoney

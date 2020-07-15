@@ -5,6 +5,7 @@
 #include <string>
 #include "Sprite.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 #include <list>
 #define _USE_MATH_DEFINES

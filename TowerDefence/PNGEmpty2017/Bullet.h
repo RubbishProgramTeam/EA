@@ -26,6 +26,8 @@ public:
 	float fireTime, fireTimeRate;
 	float bPos_x, bPos_y;
 
+	float distance;
+
 	int atk;
 
 	int getCurTower;

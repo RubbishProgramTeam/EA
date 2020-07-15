@@ -59,7 +59,9 @@ bool isClear;
 
 int CurScene;
 
-float gameStart = 3;
+float gameStart;
+
+int enemySpawnTime;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -70,6 +72,62 @@ list<Tower*> *TowerList;
 
 Enemy e[MAX_ENEMY_NUM];
 list<Enemy*> *EnemyList;
+
+void GameInit() {
+
+	isClear = false;
+
+	isGameOver = false;
+
+	CurTower = 0;
+
+	money = 100;
+
+	autoAddMoney = 10.0;
+	AddMoneyRate = 10.0;
+	autoAddMoney = AddMoneyRate;
+
+	TowerList = new list<Tower*>();
+
+	EnemyList = new list<Enemy*>();
+
+	for (int i = 0; i < MAX_BULLET_NUM; i++) {
+
+	}
+
+	for (int i = 0; i < MAX_TOWER_NUM; i++) {
+		t[i].isActive = false;
+		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
+			GameBoard[i][j] = 0;
+			//GameBoard[i][j] = 0; emtry
+			//GameBoard[i][j] = 1; HaveThing
+		}
+	}
+
+	for (int i = 0; i < MAX_ENEMY_NUM; i++) {
+		e[i].isActive = false;
+	}
+
+	Sprite BaseID("Image/BaseTower.png");
+	BaseTowerImage = BaseID.GenTexture();
+
+	Sprite SlowID("Image/SlowTower.png");
+	SlowTowerImage = SlowID.GenTexture();
+
+	Sprite TrapID("Image/Trap.png");
+	TrapImage = TrapID.GenTexture();
+
+	Sprite BlockID("Image/Block.png");
+	BlockImage = BlockID.GenTexture();
+
+	Sprite FlowerID("Image/sunflower.png");
+	FlowerImage = FlowerID.GenTexture();
+
+	Sprite ClearID("Image/Del.png");
+	ClearImage = ClearID.GenTexture();
+	// BGM Player (audio must be .wav format)
+	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+}
 
 void TitleScene() {
 	// Title
@@ -240,7 +298,7 @@ void SpawnEnemy(int value) {
 
 	EnemyList->push_back(newEnemy);
 
-	glutTimerFunc(10000, SpawnEnemy, 0);
+	glutTimerFunc(enemySpawnTime, SpawnEnemy, 0);
 }
 
 void mouseClick(int button, int state, int x, int y) {
@@ -388,6 +446,7 @@ void mouseClick(int button, int state, int x, int y) {
 void keyboardClick(unsigned char key, int x, int y) {
 	if (CurScene == 0) {
 		if (key == SPACEBAR) {
+			GameInit();
 			CurScene = 2;
 			if (isFirst) {
 				glutTimerFunc(10000, SpawnEnemy, 0);
@@ -536,63 +595,6 @@ void Draw_UI() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-void GameInit() {
-
-	isClear = false;
-
-	isGameOver = false;
-
-	CurTower = 0;
-
-	money = 50;
-
-	autoAddMoney = 10.0;
-	AddMoneyRate = 10.0;
-	autoAddMoney = AddMoneyRate;
-
-	TowerList = new list<Tower*>();
-
-	EnemyList = new list<Enemy*>();
-
-	for (int i = 0; i < MAX_BULLET_NUM; i++) {
-
-	}
-
-	for (int i = 0; i < MAX_TOWER_NUM; i++) {
-		t[i].isActive = false;
-		for (int j = 0; j < GAMEBOARD_HEIGTH; j++) {
-			GameBoard[i][j] = 0;
-			//GameBoard[i][j] = 0; emtry
-			//GameBoard[i][j] = 1; HaveThing
-		}
-	}
-
-	for (int i = 0; i < MAX_ENEMY_NUM; i++) {
-		e[i].isActive = false;
-	}
-
-	Sprite BaseID("Image/BaseTower.png");
-	BaseTowerImage = BaseID.GenTexture();
-
-	Sprite SlowID("Image/SlowTower.png");
-	SlowTowerImage = SlowID.GenTexture();
-
-	Sprite TrapID("Image/Trap.png");
-	TrapImage = TrapID.GenTexture();
-
-	Sprite BlockID("Image/Block.png");
-	BlockImage = BlockID.GenTexture();
-
-	Sprite FlowerID("Image/sunflower.png");
-	FlowerImage = FlowerID.GenTexture();
-
-	Sprite ClearID("Image/Del.png");
-	ClearImage = ClearID.GenTexture();
-	// BGM Player (audio must be .wav format)
-	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
-}
-
-
 void initRendering() {
 	glEnable(GL_DEPTH_TEST);                    // test 3D depth
 	glEnable(GL_BLEND); 
@@ -667,12 +669,28 @@ void AutoAddMoney(double dt) {
 }
 
 void update(int value) {
+	if (CurScene == 0) {
+		GameInit();
+	}
+
 	//gameoverscence
 	if (CurScene == 3) {
 		GameOverScene();
 	}
 	if (CurScene == 2) {
-		gameStart -= (30.0 / 1000.0);
+		gameStart += (30.0 / 1000.0);
+		if (gameStart >= 90) {
+			enemySpawnTime = 3000;
+		}		
+		else if (gameStart >= 50) {
+			enemySpawnTime = 5000;
+		}		
+		else if (gameStart >= 30) {
+			enemySpawnTime = 7000;
+		}
+		else if (gameStart < 30) {
+			enemySpawnTime = 10000;
+		}
 		AutoAddMoney(30.0 / 1000.0);
 		bool isCon = false;
 
@@ -688,27 +706,26 @@ void update(int value) {
 
 			if ((*it)->x <= -1) {
 				//GameOver
-				CurScene = 3;
+				//CurScene = 3;
 			}
 		}
 
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
 			
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
-				//Tower distance
-				//(*tit)->d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-				
-				float d	= sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
-				//Bullet distance
-				(*tit)->d2 = sqrtf((((*eit)->x - (*tit)->bPos_x) * ((*eit)->x - (*tit)->bPos_x)) + (((*eit)->y - (*tit)->bPos_y) * ((*eit)->y - (*tit)->bPos_y)));
-
 				if ((*tit)->y == (*eit)->y && (*eit)->x > (*tit)->x) {
-					if (d > 1) {
-						isCon = false;
-					}
+					//Tower distance		
+					//(*tit)->d = sqrtf((((*eit)->x - (*tit)->x) * ((*eit)->x - (*tit)->x)) + (((*eit)->y - (*tit)->y) * ((*eit)->y - (*tit)->y)));
+					(*tit)->d = (*eit)->x - (*tit)->x;
+
+					//Bullet distance
+					(*tit)->d2 = (*eit)->x - (*tit)->bPos_x;
+
+					cout << "d:" << (*tit)->d << endl;
+					cout << "d2:" << (*tit)->d2 << endl;
+
 
 					if ((*tit)->d2 <= 1) {
-
 						(*eit)->Damage((*tit)->atk);
 						if ((*tit)->CurTower == 2) {
 							(*eit)->isSlow = true;
@@ -716,7 +733,7 @@ void update(int value) {
 						(*tit)->DestroyBullet();
 					}
 
-					if (d <= 1) {
+					if ((*tit)->d <= 1) {
 						if ((*tit)->CurTower == 3) {
 							(*eit)->isDead = true;
 						}
@@ -795,7 +812,6 @@ int main(int argc, char **argv) {
 
 	//Title Scene
 	CurScene = 0;
-	GameInit();
 
 
 	// Disable Window Resizing
