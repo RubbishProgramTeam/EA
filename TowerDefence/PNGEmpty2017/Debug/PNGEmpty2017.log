@@ -1,24 +1,97 @@
-﻿  main.cpp
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(17): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(18): warning C4067: 未預期的語彙基元，接著前置處理器指示詞 - 必須是新行
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(28): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
-  c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\enemy.h(12): note: 請參閱 'MAX_ENEMY_NUM' 之前的定義
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(29): warning C4005: 'MAX_BULLET_NUM': 巨集重複定義
-  c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\tower.h(15): note: 請參閱 'MAX_BULLET_NUM' 之前的定義
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(110): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(141): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(152): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(165): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(166): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(172): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(173): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(178): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(213): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(214): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(215): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(375): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(380): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(385): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(555): warning C4305: '-=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\downloads\ea-master (1)\ea-master\towerdefence\pngempty2017\main.cpp(632): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-  PNGEmpty2017.vcxproj -> C:\Users\user\Downloads\EA-master (1)\EA-master\TowerDefence\Debug\PNGEmpty2017.exe
+﻿  Bullet.cpp
+c:\users\user\desktop\towerdefence\pngempty2017\bullet.cpp(22): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\bullet.cpp(30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\bullet.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Enemy.cpp
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(20): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(21): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(61): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(67): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\enemy.cpp(68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(30): warning C4005: 'MAX_ENEMY_NUM': macro redefinition
+  c:\users\user\desktop\towerdefence\pngempty2017\enemy.h(12): note: see previous definition of 'MAX_ENEMY_NUM'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(31): warning C4005: 'MAX_BULLET_NUM': macro redefinition
+  c:\users\user\desktop\towerdefence\pngempty2017\tower.h(15): note: see previous definition of 'MAX_BULLET_NUM'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(112): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(143): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(154): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(167): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(168): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(174): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(175): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(180): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(215): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(216): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(217): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(377): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(382): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(387): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(559): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\user\desktop\towerdefence\pngempty2017\main.cpp(636): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Sprite.cpp
+  Tower.cpp
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(29): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(31): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(32): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(37): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(38): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(40): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(46): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(54): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(56): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(61): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(62): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(63): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(64): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(68): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(77): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(78): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(79): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(80): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(85): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(86): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(87): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(88): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(92): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(94): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(101): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(102): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(103): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(104): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(109): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(110): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(111): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(112): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(116): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(118): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(136): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(137): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(167): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(174): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\towerdefence\pngempty2017\tower.cpp(178): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  LINK : C:\Users\User\Desktop\TowerDefence\Debug\PNGEmpty2017.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+libpngd.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(png.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngerror.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngget.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngmem.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngmem.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngread.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngread.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrio.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrtran.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrutil.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngset.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngset.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngtrans.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngtrans.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwio.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwrite.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwrite.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwtran.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwutil.obj)' or at 'C:\Users\User\Desktop\TowerDefence\Debug\libpng.pdb'; linking object as if no debug info
+  PNGEmpty2017.vcxproj -> C:\Users\User\Desktop\TowerDefence\Debug\PNGEmpty2017.exe

@@ -14,8 +14,10 @@ using namespace std;
 #include <ctime>
 
 #include <list>
-#include <stdlib.h>;
-#include <time.h>;
+#include <stdlib.h>
+#include <time.h>
+
+#include <playsoundapi.h>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -489,6 +491,8 @@ void GameInit() {
 
 	Sprite BlockID("Image/Block.png");
 	BlockImage = BlockID.GenTexture();
+
+	PlaySound("media/test.mp3", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 
