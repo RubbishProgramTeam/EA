@@ -54,9 +54,7 @@ void Enemy::update(double dt)
 		slowTimer = slowTimerRate;
 	}
 
-	if (damageTimer > 0) {
-		damageTimer -= dt;
-	}
+	damageTimer -= dt;
 
 	if (!isDead) {
 		perHP = hp / maxHP;

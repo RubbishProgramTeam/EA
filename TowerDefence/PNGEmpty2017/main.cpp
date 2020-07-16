@@ -45,15 +45,14 @@ int mouse_x;
 int mouse_y;
 
 int CurTower = 0;
-bool isGameOver;
 
 int GameBoard[GRID_SIZE * GAMEBOARD_WIDTH][GRID_SIZE * GAMEBOARD_HEIGTH];
 
 int money;
 float autoAddMoney, AddMoneyRate;
 
-int towerMoney = 0;
-bool isBuild;
+int towerMoney;
+
 bool isFirst = true;
 bool isClear;
 
@@ -62,6 +61,8 @@ int CurScene;
 float gameStart;
 
 int enemySpawnTime;
+
+int score;
 //CurScene = 0 //Title Scene
 //CurScene = 1 //How To Play Scene
 //CurScene = 2 //Game Scene
@@ -77,11 +78,13 @@ void GameInit() {
 
 	isClear = false;
 
-	isGameOver = false;
+	score = 0;
 
 	CurTower = 0;
 
-	money = 50;
+	towerMoney = 0;
+
+	money = 75;
 
 	autoAddMoney = 10.0;
 	AddMoneyRate = 10.0;
@@ -90,10 +93,6 @@ void GameInit() {
 	TowerList = new list<Tower*>();
 
 	EnemyList = new list<Enemy*>();
-
-	for (int i = 0; i < MAX_BULLET_NUM; i++) {
-
-	}
 
 	for (int i = 0; i < MAX_TOWER_NUM; i++) {
 		t[i].isActive = false;
@@ -280,14 +279,14 @@ void SpawnEnemy(int value) {
 	newEnemy->slowTimerRate = 5;
 	newEnemy->slowSpeed = 0.5;
 
-	newEnemy->hp = rand() % 15 + 10;
+	newEnemy->hp = rand() % 12 + 10;
 	newEnemy->maxHP = newEnemy->hp;
 
 	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
 
 	newEnemy->atk = 1;
 
-	newEnemy->damageTimer = 1;
+	newEnemy->damageTimer = 0;
 	newEnemy->damageTimerRate = 1;
 
 	newEnemy->x = GAMEBOARD_WIDTH;
@@ -301,10 +300,6 @@ void SpawnEnemy(int value) {
 }
 
 void mouseClick(int button, int state, int x, int y) {
-
-	if (isGameOver) {
-		return;
-	}
 
 	if (CurScene == 0) {
 
@@ -344,7 +339,7 @@ void mouseClick(int button, int state, int x, int y) {
 					newTower->CurTower = CurTower;
 					if (CurTower == 1) {
 						newTower->hp = 5.0;
-						newTower->atk = 2;
+						newTower->atk = 1;
 						newTower->fire = 1;
 						newTower->fireRate = 5;
 						newTower->addMoney = NULL;
@@ -353,7 +348,7 @@ void mouseClick(int button, int state, int x, int y) {
 					else if (CurTower == 2) {
 						newTower->hp = 5.0;
 						newTower->atk = 1;
-						newTower->fire = 3;
+						newTower->fire = 1;
 						newTower->fireRate = 3;
 						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
@@ -445,7 +440,6 @@ void mouseClick(int button, int state, int x, int y) {
 void keyboardClick(unsigned char key, int x, int y) {
 	if (CurScene == 0) {
 		if (key == SPACEBAR) {
-			GameInit();
 			CurScene = 2;
 			if (isFirst) {
 				glutTimerFunc(10000, SpawnEnemy, 0);
@@ -695,22 +689,22 @@ void update(int value) {
 
 		for (list<Enemy*>::iterator it = EnemyList->begin(); it != EnemyList->end(); ++it) {
 			(*it)->update(30.0/1000.0);
+			if ((*it)->x <= -1) {
+				//GameOver
+				CurScene = 3;
+			}
 
 			if ((*it)->hp <= 0) {
 				(*it)->isDead = true;
 				isCon = false;
 				EnemyList->remove(*it);
+				score += 10;
 				break;
-			}
-
-			if ((*it)->x <= -1) {
-				//GameOver
-				//CurScene = 3;
 			}
 		}
 
 		for (list<Enemy*>::iterator eit = EnemyList->begin(); eit != EnemyList->end(); ++eit) {
-			
+			isCon = false;
 			for (list<Tower*>::iterator tit = TowerList->begin(); tit != TowerList->end(); ++tit) {
 				if ((*tit)->y == (*eit)->y && (*eit)->x > (*tit)->x) {
 					//Tower distance		
@@ -722,6 +716,7 @@ void update(int value) {
 
 					if ((*tit)->d2 <= 1) {
 						(*eit)->Damage((*tit)->atk);
+						(*tit)->bPos_x = (*tit)->x;
 						if ((*tit)->CurTower == 2) {
 							(*eit)->isSlow = true;
 						}
@@ -729,12 +724,12 @@ void update(int value) {
 					}
 
 					if ((*tit)->d <= 1) {
+						isCon = true;
+						(*eit)->isTouch = true;
 						if ((*tit)->CurTower == 3) {
 							(*eit)->isDead = true;
-						}
-						(*eit)->isTouch = true;
-						(*tit)->Damage((*eit)->atk);
-						isCon = true;
+						}					
+						(*tit)->Damage((*eit)->atk);					
 					}
 				}
 			}
@@ -766,7 +761,7 @@ void update(int value) {
 	}
 
 	glutPostRedisplay();
-	glutTimerFunc(30, update, 0);
+	glutTimerFunc(25, update, 0);
 }
 
 void FixWindowSize() {
@@ -799,7 +794,7 @@ int main(int argc, char **argv) {
 	// register handler functions
 
 	glutReshapeFunc(cameraSetup);               // resiz window and camera setup
-	glutTimerFunc(30, update, 0);
+	glutTimerFunc(25, update, 0);
 	glutDisplayFunc(display);                   // Display function
 
 	glutMouseFunc(mouseClick);
