@@ -207,6 +207,23 @@ void HowToPlayScene() {
 	glEnd();
 }
 
+void GameOverScene() {
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
+	glEnd();
+
+	glColor3f(0, 0, 0);
+	glRasterPos2f(100, 100);
+	string gameover = "Game Over !! Your lose!!";
+	string scene = "scence";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)gameover.c_str());
+
+}
+
 void DrawGameBoard() {
 	//StoreBoard
 	glColor3f(0.73, 0.45, 0.33);
@@ -244,30 +261,144 @@ void DrawGameBoard() {
 	glEnd();
 }
 
-void GameOverScene() {
-	glColor3f(1, 1, 1);
-	glBegin(GL_POLYGON);
-	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
-	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
-	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
-	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
-	glEnd();
+void Draw_UI() {
+	string towerName[7] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select", "Money Tower", "Clear Plant" };
+
+	glColor3f(1, 1, 0);
+	glRasterPos2f(5, 270);
+	string money_UI = "Money:" + to_string(money);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
 
 	glColor3f(0, 0, 0);
-	glRasterPos2f(100, 100);
-	string gameover = "Game Over !! Your lose!!";
-	string scene = "scence";
-	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)gameover.c_str());
+	glRasterPos2f(5, 240);
+	string selectTower = "Selection: ";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower.c_str());
 
+	glRasterPos2f(5, 220);
+	if (CurTower == 1) {
+		string selectTower_UI = towerName[0];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 2) {
+		string selectTower_UI = towerName[1];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 3) {
+		string selectTower_UI = towerName[3];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 4) {
+		string selectTower_UI = towerName[2];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 5) {
+		string selectTower_UI = towerName[5];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 6) {
+		string selectTower_UI = towerName[6];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+	if (CurTower == 0) {
+		string selectTower_UI = towerName[4];
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	}
+
+	glRasterPos2f(5, 200);
+	if (CurTower == 1) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 2) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 3) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 4) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+	if (CurTower == 5) {
+		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
+	}
+
+
+	//Draw Base Tower Button
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BaseTowerImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(120, 180);
+	glTexCoord2f(1, 0); glVertex2f(210, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(210, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(120, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//Draw SlowTowerButton
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, SlowTowerImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(210, 180);
+	glTexCoord2f(1, 0); glVertex2f(300, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(300, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(210, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//Draw Block Button
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, BlockImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(300, 180);
+	glTexCoord2f(1, 0); glVertex2f(390, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(390, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(300, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+
+	//Draw Trap
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, TrapImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(390, 180);
+	glTexCoord2f(1, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(480, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(390, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//Add Money Tower
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, FlowerImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(480, 180);
+	glTexCoord2f(1, 0); glVertex2f(570, 180);
+	glTexCoord2f(1, 1.5); glVertex2f(570, 360);
+	glTexCoord2f(0, 1.5); glVertex2f(480, 360);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ClearImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(570, 180);
+	glTexCoord2f(1, 0); glVertex2f(670, 180);
+	glTexCoord2f(1, 1); glVertex2f(670, 265);
+	glTexCoord2f(0, 1); glVertex2f(570, 265);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
-
 
 double fRand(float fMin, float fMax)
 {
 	float f = (float)rand() / RAND_MAX;
 	return fMin + f * (fMax - fMin);
 }
-
 
 void SpawnEnemy(int value) {
 	Enemy *newEnemy = new Enemy();
@@ -455,137 +586,14 @@ void keyboardClick(unsigned char key, int x, int y) {
 	}
 }
 
-void Draw_UI() {
-	string towerName[7] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select", "Money Tower", "Clear Plant"};
-
-	glColor3f(1, 1, 0);
-	glRasterPos2f(5, 270);
-	string money_UI = "Money:" + to_string(money);
-	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)money_UI.c_str());
-
-	glColor3f(0, 0, 0);
-	glRasterPos2f(5, 240);
-	string selectTower = "Selection: ";
-	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower.c_str());
-
-	glRasterPos2f(5, 220);
-	if (CurTower == 1) {
-		string selectTower_UI = towerName[0];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
-	}	
-	if (CurTower == 2) {
-		string selectTower_UI = towerName[1];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
-	}	
-	if (CurTower == 3) {
-		string selectTower_UI = towerName[3];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
-	}	
-	if (CurTower == 4) {
-		string selectTower_UI = towerName[2];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
-	}	
-	if (CurTower == 5) {
-		string selectTower_UI = towerName[5];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
-	}	
-	if (CurTower == 6) {
-		string selectTower_UI = towerName[6];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+void AutoAddMoney(double dt) {
+	if (autoAddMoney > 0) {
+		autoAddMoney -= dt;
 	}
-	if(CurTower == 0){
-		string selectTower_UI = towerName[4];
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
+	else if (autoAddMoney <= 0) {
+		money += 25;
+		autoAddMoney = AddMoneyRate;
 	}
-
-	glRasterPos2f(5, 200);
-	if (CurTower == 1) {
-		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
-	}
-	if (CurTower == 2) {
-		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
-	}
-	if (CurTower == 3) {
-		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
-	}
-	if (CurTower == 4) {
-		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
-	}
-	if (CurTower == 5) {
-		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
-		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTowerMoney_UI.c_str());
-	}
-
-
-	//Draw Base Tower Button
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, BaseTowerImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(120, 180);
-	glTexCoord2f(1, 0); glVertex2f(210, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(210, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(120, 360);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-	//Draw SlowTowerButton
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, SlowTowerImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(210, 180);
-	glTexCoord2f(1, 0); glVertex2f(300, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(300, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(210, 360);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-	//Draw Block Button
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, BlockImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(300, 180);
-	glTexCoord2f(1, 0); glVertex2f(390, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(390, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(300, 360);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-
-	//Draw Trap
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, TrapImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(390, 180);
-	glTexCoord2f(1, 0); glVertex2f(480, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(480, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(390, 360);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-	//Add Money Tower
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, FlowerImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(480, 180);
-	glTexCoord2f(1, 0); glVertex2f(570, 180);
-	glTexCoord2f(1, 1.5); glVertex2f(570, 360);
-	glTexCoord2f(0, 1.5); glVertex2f(480, 360);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ClearImage);
-	glBegin(GL_POLYGON);
-	glTexCoord2f(0, 0); glVertex2f(570, 180);
-	glTexCoord2f(1, 0); glVertex2f(670, 180);
-	glTexCoord2f(1, 1); glVertex2f(670, 265);
-	glTexCoord2f(0, 1); glVertex2f(570, 265);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
 }
 
 void initRendering() {
@@ -650,15 +658,6 @@ void display() {
 		GameOverScene();
 	}
 	glutSwapBuffers();
-}
-void AutoAddMoney(double dt) {
-	if (autoAddMoney > 0) {
-		autoAddMoney -= dt;
-	}
-	else if (autoAddMoney <= 0) {
-		money += 25;
-		autoAddMoney = AddMoneyRate;
-	}
 }
 
 void update(int value) {
@@ -792,7 +791,6 @@ int main(int argc, char **argv) {
 	initRendering();                            // initialize rendering
 
 	// register handler functions
-
 	glutReshapeFunc(cameraSetup);               // resiz window and camera setup
 	glutTimerFunc(25, update, 0);
 	glutDisplayFunc(display);                   // Display function
@@ -802,6 +800,7 @@ int main(int argc, char **argv) {
 
 	//Title Scene
 	CurScene = 0;
+
 	// BGM Player (audio must be .wav format)
 	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 
