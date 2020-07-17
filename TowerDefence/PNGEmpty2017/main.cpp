@@ -295,6 +295,7 @@ void DrawGameBoard() {
 }
 
 void Draw_UI() {
+	//What Tower Selected
 	string towerName[7] = { "Base Tower", "Slow Tower", "Road Block", "Trap" , "Not Select", "Money Tower", "Clear Plant" };
 
 	glColor3f(1, 1, 0);
@@ -337,6 +338,7 @@ void Draw_UI() {
 		glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)selectTower_UI.c_str());
 	}
 
+	//Tower Money
 	glRasterPos2f(5, 200);
 	if (CurTower == 1) {
 		string selectTowerMoney_UI = "$ " + to_string(towerMoney);
