@@ -40,6 +40,7 @@ GLuint BlockImage;
 GLuint TrapImage;
 GLuint FlowerImage;
 GLuint ClearImage;
+GLuint GameOverImage;
 
 int mouse_x;
 int mouse_y;
@@ -55,6 +56,7 @@ int towerMoney;
 
 bool isFirst = true;
 bool isClear;
+bool isInside;
 
 int CurScene;
 
@@ -77,6 +79,8 @@ list<Enemy*> *EnemyList;
 void GameInit() {
 
 	isClear = false;
+
+	gameStart = 0;
 
 	score = 0;
 
@@ -125,6 +129,8 @@ void GameInit() {
 	Sprite ClearID("Image/Del.png");
 	ClearImage = ClearID.GenTexture();
 
+	Sprite GameOverID("Image/GameOver.png");
+	GameOverImage = GameOverID.GenTexture();
 }
 
 void TitleScene() {
@@ -183,14 +189,18 @@ void HowToPlayScene() {
 	string HowToPlay = "How To Play";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay.c_str());
 	glRasterPos2f(5, 250);
-	string HowToPlay_Content = "At the beginning of the game the player will have a hundred dollars. Players can \nuse money to buy plants and choose where these plants appear in their own \nland (The yellow area is your own land). These plants will assist the player \nagainst the enemy. The enemy will appear to the right of the interface, attacking \nfrom right to left. When the player successfully uses the plant to resist the \nenemy's attack, the player can win.";
+	string HowToPlay_Content = "At the beginning of the game the player will have 75 dollars. Players can \nuse money to buy plants and choose where these plants appear in their own \nland (The yellow area is your own land). These plants will assist the player \nagainst the enemy. The enemy will appear to the right of the interface, attacking \nfrom right to left. When the player successfully uses the plant to resist the \nenemy's attack, the player can win.";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay_Content.c_str());
 	glRasterPos2f(230, 44);
 	string BackToTitle = "Back to title scene";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)BackToTitle.c_str());
 
-
-	glColor3f(0, 1, 0);
+	if (isInside) {
+		glColor3f(1, 0, 0);
+	}
+	else {
+		glColor3f(0, 1, 0);
+	}
 	glBegin(GL_POLYGON);
 	glVertex2f(225, 70);
 	glVertex2f(387, 70);
@@ -208,20 +218,43 @@ void HowToPlayScene() {
 }
 
 void GameOverScene() {
-	glColor3f(1, 1, 1);
-	glBegin(GL_POLYGON);
-	glVertex2f(0, GRID_SIZE * GAMEBOARD_HEIGTH);
-	glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
-	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
-	glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * GAMEBOARD_HEIGTH);
-	glEnd();
+	glColor3f(1, 1, 0);
+	glRasterPos2f(195, 150);
+	string GameTimeUI = "Game Finish Time: " + to_string(gameStart);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)GameTimeUI.c_str());
+
+	glColor3f(1, 0.5, 0.25);
+	glRasterPos2f(285, 120);
+	string ScoreUI = "Score: " + to_string(score);
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)ScoreUI.c_str());
 
 	glColor3f(0, 0, 0);
-	glRasterPos2f(100, 100);
-	string gameover = "Game Over !! Your lose!!";
-	string scene = "scence";
-	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)gameover.c_str());
+	glRasterPos2f(245, 20);
+	string BackToTitle = "Back to title scene";
+	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)BackToTitle.c_str());
 
+	if (isInside) {
+		glColor3f(0, 1, 1);
+	}
+	else {
+		glColor3f(0, 1, 0);
+	}
+	glBegin(GL_POLYGON);
+	glVertex2f(240, 45);
+	glVertex2f(402, 45);
+	glVertex2f(402, 5);
+	glVertex2f(240, 5);
+	glEnd();
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, GameOverImage);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0, 0); glVertex2f(0, 0);
+	glTexCoord2f(0, 1); glVertex2f(0, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glTexCoord2f(1, 1); glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, GRID_SIZE * (GAMEBOARD_HEIGTH + GAMESTORE_HEIGTH));
+	glTexCoord2f(1, 0); glVertex2f(GRID_SIZE * GAMEBOARD_WIDTH, 0);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
 void DrawGameBoard() {
@@ -410,7 +443,7 @@ void SpawnEnemy(int value) {
 	newEnemy->slowTimerRate = 5;
 	newEnemy->slowSpeed = 0.5;
 
-	newEnemy->hp = rand() % 12 + 10;
+	newEnemy->hp = rand() % 10 + 8;
 	newEnemy->maxHP = newEnemy->hp;
 
 	newEnemy->perHP = newEnemy->hp / newEnemy->maxHP;
@@ -442,6 +475,14 @@ void mouseClick(int button, int state, int x, int y) {
 			CurScene = 0;
 		}
 	}
+
+	if (CurScene == 3) {
+		if (x >= 225 && x <= 387 && y >= 253 && y <= 289) {
+			//Back to title scene button
+			CurScene = 0;
+		}
+	}
+
 	//Game Scene
 	if (CurScene == 2) {
 		if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
@@ -661,14 +702,11 @@ void display() {
 }
 
 void update(int value) {
+
 	if (CurScene == 0) {
 		GameInit();
 	}
 
-	//gameoverscence
-	if (CurScene == 3) {
-		GameOverScene();
-	}
 	if (CurScene == 2) {
 		gameStart += (30.0 / 1000.0);
 		if (gameStart >= 90) {
@@ -762,6 +800,29 @@ void update(int value) {
 	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
 }
+void mouseMove(int x, int y) {
+	if (CurScene == 1) {
+		if (x >= 225 && x <= 387 && y >= 230 && y <= 268) {
+			//Back to title scene button
+			isInside = true;
+		}
+		else {
+			isInside = false;
+		}
+	}
+
+	if (CurScene == 3) {
+		cout << x << " " << y << endl;
+		if (x >= 240 && x <= 402 && y >= 253 && y <= 289) {
+			//Back to title scene button
+			isInside = true;
+		}
+		else {
+			isInside = false;
+		}
+	}
+
+}
 
 void FixWindowSize() {
 	HWND hwnd = FindWindow(NULL, "Tower Defence");    // Get window HWND
@@ -796,9 +857,10 @@ int main(int argc, char **argv) {
 	glutDisplayFunc(display);                   // Display function
 
 	glutMouseFunc(mouseClick);
+	glutPassiveMotionFunc(mouseMove);
 	glutKeyboardFunc(keyboardClick);
 
-	//Title Scene
+	//Title Scene 
 	CurScene = 0;
 
 	// BGM Player (audio must be .wav format)
