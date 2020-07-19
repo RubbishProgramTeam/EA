@@ -189,7 +189,7 @@ void HowToPlayScene() {
 	string HowToPlay = "How To Play";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay.c_str());
 	glRasterPos2f(5, 250);
-	string HowToPlay_Content = "At the beginning of the game the player will have 75 dollars. Players can \nuse money to buy plants and choose where these plants appear in their own \nland (The yellow area is your own land). These plants will assist the player \nagainst the enemy. The enemy will appear to the right of the interface, attacking \nfrom right to left. When the player successfully uses the plant to resist the \nenemy's attack, the player can win.";
+	string HowToPlay_Content = "At the beginning of the game the player will have 75 dollars. Players can \nuse money to buy plants and choose where these plants appear in their own \nland (The yellow area is your own land). These plants will assist the player \nagainst the enemy. The enemy will appear to the right of the interface, attacking \nfrom right to left. The more the player successfully resists, the higher the score \nwill be. The game will end when the player can't resist the enemy's attack.";
 	glutBitmapString(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)HowToPlay_Content.c_str());
 	glRasterPos2f(230, 44);
 	string BackToTitle = "Back to title scene";
