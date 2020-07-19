@@ -1,0 +1,24 @@
+﻿  main.cpp
+libpngd.lib(png.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Generating code
+  2 of 79 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+libpngd.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(png.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngerror.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngget.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngmem.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngmem.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngread.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngread.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrio.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrtran.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngrutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngrutil.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngset.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngset.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngtrans.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngtrans.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwio.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwrite.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwrite.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwtran.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+libpngd.lib(pngwutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpngd.lib(pngwutil.obj)' or at 'C:\Users\User\Desktop\PNGEmpty2017\Release\libpng.pdb'; linking object as if no debug info
+  PNGEmpty2017.vcxproj -> C:\Users\User\Desktop\PNGEmpty2017\Release\PNGEmpty2017.exe
