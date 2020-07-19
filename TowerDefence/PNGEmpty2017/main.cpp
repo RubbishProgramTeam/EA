@@ -512,14 +512,16 @@ void mouseClick(int button, int state, int x, int y) {
 
 					newTower->CurTower = CurTower;
 					if (CurTower == 1) {
+						//Base Tower
 						newTower->hp = 5.0;
-						newTower->atk = 1;
+						newTower->atk = 2;
 						newTower->fire = 1;
 						newTower->fireRate = 5;
 						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 2) {
+						//SlowTower
 						newTower->hp = 5.0;
 						newTower->atk = 1;
 						newTower->fire = 1;
@@ -528,18 +530,21 @@ void mouseClick(int button, int state, int x, int y) {
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 3) {
+						//Trap
 						newTower->hp = 1.0;
-						newTower->atk = 10;
+						newTower->atk = 7;
 						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 4) {
+						//Road Block
 						newTower->hp = 15.0;
 						newTower->atk = 0;
 						newTower->addMoney = NULL;
 						newTower->MaxHP = newTower->hp;
 					}
 					else if (CurTower == 5) {
+						//Add Money Tower
 						newTower->hp = 5.0;
 						newTower->atk = 0;
 						newTower->MaxHP = newTower->hp;
@@ -584,7 +589,7 @@ void mouseClick(int button, int state, int x, int y) {
 			if (mouse_x >= 7 && mouse_x <= 9 && mouse_y >= 6 && mouse_y <= 9) {
 				//SlowTower
 				CurTower = 2;
-				towerMoney = 175;
+				towerMoney = 160;
 			}
 			if (mouse_x >= 10 && mouse_x <= 12 && mouse_y >= 6 && mouse_y <= 9) {
 				//Block
@@ -594,7 +599,7 @@ void mouseClick(int button, int state, int x, int y) {
 			if (mouse_x >= 13 && mouse_x <= 15 && mouse_y >= 6 && mouse_y <= 9) {
 				//Trap
 				CurTower = 3;
-				towerMoney = 75;
+				towerMoney = 95;
 			}			
 			if (mouse_x >= 16 && mouse_x <= 18 && mouse_y >= 6 && mouse_y <= 9) {
 				//SunFlower
