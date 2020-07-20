@@ -871,7 +871,7 @@ int main(int argc, char **argv) {
 	CurScene = 0;
 
 	// BGM Player (audio must be .wav format)
-	PlaySound("media/test.wav", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+	PlaySound("media/Markvard - Perfect Day", NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
 
 	// Disable Window Resizing
 	FixWindowSize();

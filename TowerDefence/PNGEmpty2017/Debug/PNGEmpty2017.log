@@ -1,108 +1,155 @@
 ﻿  Bullet.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(22): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(30): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\bullet.cpp(38): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Bullet.cpp(22,27): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Bullet.cpp(30,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Bullet.cpp(30,44): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Bullet.cpp(38,18): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
   Enemy.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(20): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(21): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(35): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(57): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(62): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(65): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(68): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.cpp(69): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(20,13): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(21,13): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(35,125): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(35,44): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(57,19): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(62,27): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(65,10): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(68,19): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.cpp(69,10): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
   main.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(31): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
-  c:\users\user\documents\github\ea\towerdefence\pngempty2017\enemy.h(12): note: 請參閱 'MAX_ENEMY_NUM' 之前的定義
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(32): warning C4005: 'MAX_BULLET_NUM': 巨集重複定義
-  c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.h(16): note: 請參閱 'MAX_BULLET_NUM' 之前的定義
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(176): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(211): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(262): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(275): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(276): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(282): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(283): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(288): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(448): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(459): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(460): warning C4305: '引數': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(460): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(639): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(718): warning C4305: '+=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(763): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\main.cpp(848): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(31,1): warning C4005: 'MAX_ENEMY_NUM': 巨集重複定義
+D:\MET4335\TowerDefence\PNGEmpty2017\Enemy.h(12): message : 請參閱 'MAX_ENEMY_NUM' 之前的定義
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(32,1): warning C4005: 'MAX_BULLET_NUM': 巨集重複定義
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.h(16): message : 請參閱 'MAX_BULLET_NUM' 之前的定義
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(176,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(211,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(262,28): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(275,27): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(276,59): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(282,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(283,24): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(288,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(448,29): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(459,23): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(460,36): warning C4305: '引數': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(460,29): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(639,21): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(718,31): warning C4305: '+=': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(763,30): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\main.cpp(848,12): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
   Sprite.cpp
   Tower.cpp
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(29): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(30): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(32): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(38): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(39): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(40): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(46): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(53): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(54): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(55): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(56): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(61): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(62): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(63): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(64): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(68): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(70): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(77): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(78): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(79): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(80): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(85): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(86): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(87): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(88): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(92): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(94): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(101): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(102): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(103): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(104): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(109): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(110): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(111): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(112): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(116): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(118): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(125): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(126): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(127): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(128): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(133): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(134): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(135): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(136): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(140): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(142): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(161): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(162): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(199): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(209): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(214): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-c:\users\user\documents\github\ea\towerdefence\pngempty2017\tower.cpp(219): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(29,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(29,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(30,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(30,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(31,35): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(31,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(32,23): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(32,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(37,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(37,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(38,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(38,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(39,49): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(39,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(40,37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(40,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(46,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(46,49): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(53,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(53,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(54,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(54,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(55,35): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(55,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(56,23): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(56,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(61,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(61,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(62,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(62,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(63,49): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(63,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(64,37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(64,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(68,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(70,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(70,49): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(77,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(77,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(78,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(78,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(79,35): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(79,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(80,23): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(80,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(85,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(85,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(86,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(86,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(87,49): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(87,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(88,37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(88,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(92,25): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(94,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(94,49): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(101,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(101,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(102,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(102,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(103,35): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(103,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(104,23): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(104,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(109,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(109,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(110,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(110,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(111,49): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(111,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(112,37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(112,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(116,26): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(118,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(118,49): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(125,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(125,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(126,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(126,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(127,35): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(127,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(128,23): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(128,14): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(133,31): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(133,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(134,43): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(134,16): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(135,49): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(135,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(136,37): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(136,22): warning C4244: '引數': 將 'int' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(140,29): warning C4305: '引數': 從 'double' 轉換為 'GLfloat'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(142,134): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(142,49): warning C4244: '引數': 將 'double' 轉換為 'GLfloat'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(161,23): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(162,23): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(199,26): warning C4244: '=': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(209,17): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(214,19): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\MET4335\TowerDefence\PNGEmpty2017\Tower.cpp(219,13): warning C4244: '-=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
   正在產生程式碼...
 LINK : warning LNK4098: 預設的程式庫 'LIBCMTD' 與其他使用的程式庫衝突，請使用 /NODEFAULTLIB:library
-libpngd.lib(png.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(png.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngerror.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngerror.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngget.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngget.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngmem.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngmem.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngread.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngread.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngrio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrio.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngrtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrtran.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngrutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrutil.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngset.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngset.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngtrans.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngtrans.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngwio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwio.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngwrite.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwrite.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngwtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwtran.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-libpngd.lib(pngwutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwutil.obj)' 或位於 'C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
-  PNGEmpty2017.vcxproj -> C:\Users\user\Documents\GitHub\EA\TowerDefence\Debug\PNGEmpty2017.exe
+libpngd.lib(png.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(png.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngerror.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngerror.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngget.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngget.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngmem.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngmem.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngread.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngread.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrio.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrtran.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngrutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngrutil.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngset.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngset.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngtrans.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngtrans.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwio.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwio.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwrite.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwrite.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwtran.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwtran.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+libpngd.lib(pngwutil.obj) : warning LNK4099: 找不到 PDB 'libpng.pdb' (有 'libpngd.lib(pngwutil.obj)' 或位於 'D:\MET4335\TowerDefence\Debug\libpng.pdb')，當做沒有偵錯資訊，連結物件
+  PNGEmpty2017.vcxproj -> D:\MET4335\TowerDefence\Debug\PNGEmpty2017.exe
